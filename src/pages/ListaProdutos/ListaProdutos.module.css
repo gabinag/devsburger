@@ -1,0 +1,40 @@
+.listaProdutos {
+    width: min(80rem, 100%);
+    margin: 2rem auto;
+}
+
+.wrapCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.card {
+    width: min(20rem, 100%);
+    border: 1px solid gray;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.card img {
+    width: min(20rem, 100%);
+    max-height: 12rem;
+    object-position: center;
+    object-fit: cover;
+    border-radius: .5rem;
+}
+
+.card p {
+    margin-bottom: .4rem;
+}
+
+.wrapFlex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapQtd {
+    display: flex;
+    gap: .2rem;
+}
