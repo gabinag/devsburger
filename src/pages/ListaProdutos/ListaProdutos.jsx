@@ -5,6 +5,7 @@ import styles from './ListaProdutos.module.css';
 import { Link } from 'react-router-dom';
 import { Banner } from '../../components/Banner/Banner';
 import { Header } from '../../components/Header/Header';
+import { Footer } from '../../components/Footer/Footer';
 
 export const ListaProdutos = () => {
   const [products, setProducts] = useState([]);
@@ -54,6 +55,7 @@ export const ListaProdutos = () => {
             <Link to='/carrinho'>Ir para o carrinho</Link>
           </div>
       </div>
+      <Footer/>
     </div>
   )
 }
