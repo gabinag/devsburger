@@ -29,3 +29,15 @@
     display: flex;
     gap: .2rem;
 }
+
+.wrapContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.wrapBtn {
+    display: flex;
+    gap: 1rem;
+}

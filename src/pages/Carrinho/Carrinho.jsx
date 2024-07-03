@@ -1,9 +1,11 @@
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import styles from './Carrinho.module.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Botao } from '../../components/Botao/Botao';
 
 export const Carrinho = () => {
+  const navigate = useNavigate();
   const { cart, removeFromCart, addToCart } = useContext(CartContext);
 
   const calculaPrecoTotal = () => {
@@ -35,9 +37,12 @@ export const Carrinho = () => {
           ))}
         </section>
       )}
-      <p>Total: R${calculaPrecoTotal().toFixed(2)}</p>
-      <div>
-        <Link to='/dados'>Ir para os dados</Link>
+      <div className={styles.wrapContainer}>
+        <p>Total: R${calculaPrecoTotal().toFixed(2)}</p>
+        <div className={styles.wrapBtn}>
+          <Botao onClick={() => navigate('/')} label="Voltar"/>
+          <Botao onClick={() => navigate('/dados')} label="Prosseguir"/>
+        </div>
       </div>
     </div>
   );

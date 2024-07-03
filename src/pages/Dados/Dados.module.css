@@ -23,11 +23,25 @@ form {
 }
 
 input {
-    margin-bottom: 1rem;
+    margin: .5rem 0 1rem;
+    max-width: 30rem;
+    border: 1px solid lightgray;
+    border-radius: 2rem;
+    padding: .3rem .5rem;
 }
 
 .firstSection {
     width: min(35rem, 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+.btnCep {
+    margin-left: 1rem;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 20rem;
+    background-color: lightgray;
 }
 
 .wrapInputs {
@@ -38,4 +52,33 @@ input {
 
 .sizeInput {
     width: 10rem;
+}
+
+.secondSection {
+    width: min(35rem, 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.total {
+    margin-top: .5rem;
+    font-weight: 600;
+    font-size: 1.2rem
+}
+
+select {
+    border: 1px solid lightgray;
+    border-radius: 10rem;
+    padding: .3rem;
+    width: 54%;
+}
+
+.wrapBtn {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
 }

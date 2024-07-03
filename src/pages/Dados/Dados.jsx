@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import styles from './Dados.module.css';
 import apiDevsBurger from '../../services/apiDevsBurger';
+import { Botao } from '../../components/Botao/Botao';
 
 export const Dados = () => {
   const { cart } = useContext(CartContext);
@@ -17,7 +18,7 @@ export const Dados = () => {
       bairro: '',
       complemento: ''
     },
-    paymentMethod: 'Cartão',
+    paymentMethod: '',
   });
 
   const handleChange = (e) => {
@@ -74,26 +75,22 @@ export const Dados = () => {
         <h1>Preencha os campos a seguir</h1>
         <form onSubmit={handleSubmit}>
         <section className={styles.firstSection}>
-          <div>
-            <label htmlFor="name">Nome</label>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="phone">Telefone</label>
-            <input
-              type="text"
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <label htmlFor="name">Nome</label>
+          <input
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="phone">Telefone</label>
+          <input
+            type="text"
+            name="phone"
+            value={form.phone}
+            onChange={handleChange}
+            required
+          />
           <div>
             <p>Selecione a forma de entrega:</p>
             <div className={styles.wrapRadio}>
@@ -113,12 +110,14 @@ export const Dados = () => {
           <div>
             <div>
               <label htmlFor="cep">CEP</label>
-              <input
-                type="text"
-                name="cep"
-                onChange={handleChange}
-              />
-              <button>Pesquisar</button>
+              <div>
+                <input
+                  type="text"
+                  name="cep"
+                  onChange={handleChange}
+                />
+                <button className={styles.btnCep}>Pesquisar</button>
+              </div>
             </div>
             <div className={styles.wrapInputs}>
               <div>
@@ -168,31 +167,34 @@ export const Dados = () => {
           </div>
           )}
         </section>
-        <section>
+        <section className={styles.secondSection}>
           <h3>Itens no Carrinho</h3>
           <div>
             {cart.map((item) => (
               <div key={item.id}>
-                <p>{item.name}</p>
-                <p>Quantidade: {item.quantity}</p>
-                <p>Preço: R${item.price * item.quantity}</p>
+                <p>{item.quantity}x {item.name} - R${item.price * item.quantity}</p>
               </div>
             ))}
+            <p className={styles.total}>Total: R${cart.reduce((total, item) => total + item.price * item.quantity, 0)}</p>
           </div>
           <div>
-            <label htmlFor="paymentMethod">Método de Pagamento</label>
+            <label htmlFor="paymentMethod">Forma de Pagamento: </label>
             <select
               name="paymentMethod"
               value={form.paymentMethod}
               onChange={handleChange}
               required
             >
-              <option value="Cartão">Cartão de Crédito/Débito</option>
+              <option value="" disabled selected hidden>Selecionar</option>
+              <option value="Cartão">Cartão de Crédito</option>
               <option value="Dinheiro">Dinheiro</option>
               <option value="Pix">Pix</option>
             </select>
           </div>
-          <button type="submit">Finalizar Pedido</button>
+          <div className={styles.wrapBtn}>
+            <Botao onClick={() => navigate('/carrinho')} label="Alterar itens"/>
+            <Botao type="submit" label="Finalizar pedido"/>
+          </div>
         </section>
       </form>
     </div>
