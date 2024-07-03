@@ -44,8 +44,9 @@ export const Dados = () => {
     e.preventDefault();
 
     const formattedAddress = deliveryOption === 'delivery'
-      ? `${form.address.logradouro}, ${form.address.numero} - ${form.address.bairro} (${form.address.complemento}) - ${form.address.cep}`
-      : 'retirada na loja';
+    ? `${form.address.logradouro}, ${form.address.numero} - ${form.address.bairro}${form.address.complemento ? ` (${form.address.complemento})` : ''}`
+    : 'retirada na loja';
+
 
     const orderData = {
       ...form,
