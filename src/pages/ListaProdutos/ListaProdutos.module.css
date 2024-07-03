@@ -7,12 +7,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .card {
     width: min(20rem, 100%);
-    border: 1px solid gray;
+    border: 1px solid lightgray;
     border-radius: 1rem;
     padding: 1rem;
 }
