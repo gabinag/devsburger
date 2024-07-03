@@ -39,6 +39,8 @@ export const Carrinho = () => {
       )}
       <div className={styles.wrapContainer}>
         <p>Total: R${calculaPrecoTotal().toFixed(2)}</p>
+        <label htmlFor="obs">Observações:</label>
+        <textarea name="obs" id="obs" placeholder='Alguma observação? Ex.: Sem cebola, sem picles...'></textarea>
         <div className={styles.wrapBtn}>
           <Botao onClick={() => navigate('/')} label="Voltar"/>
           <Botao onClick={() => navigate('/dados')} label="Prosseguir"/>
