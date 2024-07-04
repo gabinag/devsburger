@@ -17,7 +17,7 @@ export const Carrinho = () => {
       {cart.length === 0 ? (
         <p>Carrinho vazio</p>
       ) : (
-        <section>
+        <section className={styles.wrapCards}>
           {cart.map((product) => (
             <div className={styles.card} key={product.id}>
               <img src={product.image} alt=""/>
@@ -33,18 +33,17 @@ export const Carrinho = () => {
                   </div>
               </div>
             </div>
-        
           ))}
         </section>
       )}
-      <div className={styles.wrapContainer}>
-        <p>Total: R${calculaPrecoTotal().toFixed(2)}</p>
+      <p className={styles.wrapFlexEnd}>Total: R${calculaPrecoTotal().toFixed(2)}</p>
+      <div className={styles.wrapTextArea}>
         <label htmlFor="obs">Observações:</label>
         <textarea name="obs" id="obs" placeholder='Alguma observação? Ex.: Sem cebola, sem picles...'></textarea>
-        <div className={styles.wrapBtn}>
-          <Botao onClick={() => navigate('/')} label="Voltar"/>
-          <Botao onClick={() => navigate('/dados')} label="Prosseguir"/>
-        </div>
+      </div>
+      <div className={styles.wrapFlexEnd}>
+        <Botao onClick={() => navigate('/')} label="Voltar"/>
+        <Botao onClick={() => navigate('/dados')} label="Prosseguir"/>
       </div>
     </div>
   );

@@ -1,13 +1,14 @@
 import apiDevsBurger from '../../services/apiDevsBurger';
 import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import styles from './ListaProdutos.module.css';
-import { Link } from 'react-router-dom';
 import { Banner } from '../../components/Banner/Banner';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 
 export const ListaProdutos = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const { addToCart, removeFromCart, cart } = useContext(CartContext);
 
@@ -23,6 +24,10 @@ export const ListaProdutos = () => {
   const getQuantity = (productId) => {
     const item = cart.find((product) => product.id === productId);
     return item ? item.quantity : 0;
+  };
+
+  const getTotalQuantity = () => {
+    return cart.reduce((total, product) => total + product.quantity, 0);
   };
 
   return (
@@ -51,9 +56,7 @@ export const ListaProdutos = () => {
               ))}
               </section>
           )}
-          <div>
-            <Link to='/carrinho'>Ir para o carrinho</Link>
-          </div>
+          <button onClick={() => {navigate('/carrinho')}} label="Ir para o carrinho" className={styles.irCarrinho}>({getTotalQuantity()}) Ir para o carrinho</button>
       </div>
       <Footer/>
     </div>
