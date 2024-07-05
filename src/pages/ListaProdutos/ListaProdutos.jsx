@@ -36,14 +36,14 @@ export const ListaProdutos = () => {
       <Banner/>
       <div className={styles.listaProdutos}>
           {products.length === 0 ? (
-            <p>Carregando...</p>
+            <p className={styles.loading}>Carregando produtos...</p>
           ) : (
               <section className={styles.wrapCards}>
               {products.map((product) => (
                 <div className={styles.card} key={product.id}>
                   <img src={product.image} alt=""/>
-                  <p>{product.name}</p>
-                  <p>{product.description}</p>
+                  <h3>{product.name}</h3>
+                  <p className={styles.desc}>{product.description}</p>
                   <div className={styles.wrapFlex}>
                     <p>R${product.price}</p>
                     <div className={styles.wrapQtd}>

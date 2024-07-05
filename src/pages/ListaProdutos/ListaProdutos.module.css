@@ -1,7 +1,11 @@
 .listaProdutos {
     width: min(80rem, 100%);
-    margin: 2rem auto;
+    margin: 2rem auto 3rem;
     min-height: 100vh;
+}
+
+.loading {
+    text-align: center;
 }
 
 .wrapCards {
@@ -26,8 +30,15 @@
     border-radius: .5rem;
 }
 
-.card p {
-    margin-bottom: .4rem;
+.card h3 {
+    font-size: 1.4rem;
+    margin-top: .5rem;
+}
+
+.desc {
+    margin-top: .3rem;
+    height: 6.5rem;
+    font-size: 1.3rem;
 }
 
 .wrapFlex {

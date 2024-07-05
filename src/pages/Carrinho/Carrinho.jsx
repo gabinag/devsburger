@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import styles from './Carrinho.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Botao } from '../../components/Botao/Botao';
 import { Header } from '../../components/Header/Header'
 import { Footer } from '../../components/Footer/Footer'
@@ -20,7 +20,7 @@ export const Carrinho = () => {
       <div className={styles.carrinho}>
         <h1>Carrinho</h1>
         {cart.length === 0 ? (
-          <p>O carrinho está vazio</p>
+          <p>Seu carrinho está vazio, volte em <Link to="/">Produtos</Link></p>
         ) : (
           <section>
             <div className={styles.wrapCards}>
