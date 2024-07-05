@@ -1,11 +1,15 @@
 .carrinho {
     width: min(50rem, 100%);
-    margin: 2rem auto;
-    height: 100vh;
+    margin: 1rem auto 2rem;
+    min-height: 90vh;
 }
 
 .wrapCards {
-    min-height: 70vh;
+    min-height: 60vh;
+}
+
+.carrinho h1 {
+    margin-bottom: 2rem; 
 }
 
 .card {
@@ -44,7 +48,7 @@
 .wrapTextArea {
     display: flex;
     flex-direction: column;
-    margin: 2rem 0 1rem;
+    margin: 1rem 0 1.5rem;
     gap: .5rem;
 }
 
