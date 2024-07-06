@@ -2,7 +2,6 @@ import { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
@@ -11,14 +10,14 @@ export const CartProvider = ({ children }) => {
   }, []);
 
   const loadCartFromStorage = () => {
-    const storedCart = localStorage.getItem('cart');
+    const storedCart = sessionStorage.getItem('cart');
     if (storedCart) {
       setCart(JSON.parse(storedCart));
     }
   };
 
   const saveCartToStorage = (newCart) => {
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    sessionStorage.setItem('cart', JSON.stringify(newCart));
   };
 
   const addToCart = (item) => {
