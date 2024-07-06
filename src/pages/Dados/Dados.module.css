@@ -1,6 +1,8 @@
 .dados {
     width: min(70rem, 100%);
-    margin: 2rem auto;
+    margin: auto;
+    min-height: 86vh;
+    margin-top: 5rem;  
 }
 
 .wrapRadio {
@@ -19,7 +21,7 @@ form {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 
 input {
