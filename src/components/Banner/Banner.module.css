@@ -7,7 +7,25 @@
     height: 60vh;
     margin: auto;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content div {
+    text-align: end;
+    width: min(53rem, 100%);
+}
+
+.content div h1 {
+    font-size: 4rem;
+}
+
+.content div p {
+    font-size: 1.8rem;
+    margin: 1rem 0;
+}
+
+.content img {
+    width: 30rem;
+    padding-left: 2rem;
 }
