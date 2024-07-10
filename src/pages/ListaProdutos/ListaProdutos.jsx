@@ -11,6 +11,7 @@ import { Produto } from '../../components/Produto/Produto';
 export const ListaProdutos = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('HAMBURGUERES');
   const { addToCart, removeFromCart, cart } = useContext(CartContext);
 
   useEffect(() => {
@@ -31,12 +32,12 @@ export const ListaProdutos = () => {
     return cart.reduce((total, product) => total + product.quantity, 0);
   };
 
-  const scrollToCategory = (category) => {
-    const element = document.getElementById(category);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
   };
+
+  const filteredProducts = products.filter(product => product.category === selectedCategory);
+
 
   return (
     <div>
@@ -45,48 +46,20 @@ export const ListaProdutos = () => {
       <main className={styles.listaProdutos}>
         <h1>Nossos produtos</h1>
         <ul>
-          <li onClick={() => scrollToCategory("hamburgueres")}>Hambúrgueres</li>
-          <li onClick={() => scrollToCategory("combos")}>Combos</li>
-          <li onClick={() => scrollToCategory("acompanhamentos")}>Acompanhamentos</li>
-          <li onClick={() => scrollToCategory("bebidas")}>Bebidas</li>
+          <li onClick={() => handleCategoryClick("HAMBURGUERES")}>Hambúrgueres</li>
+          <li onClick={() => handleCategoryClick("COMBOS")}>Combos</li>
+          <li onClick={() => handleCategoryClick("ACOMPANHAMENTOS")}>Acompanhamentos</li>
+          <li onClick={() => handleCategoryClick("BEBIDAS")}>Bebidas</li>
         </ul>
-        {products.length === 0 ? (
+        {filteredProducts.length === 0 ? (
           <p className={styles.loading}>Carregando produtos...</p>
         ) : (
-          <>
-            <Produto
-              id="hamburgueres"
-              title="Hambúrgueres"
-              products={products.filter(product => product.category === "HAMBURGUERES")}
-              removeFromCart={removeFromCart}
-              addToCart={addToCart}
-              getQuantity={getQuantity}
-            />
-            <Produto
-              id="combos"
-              title="Combos"
-              products={products.filter(product => product.category === "COMBOS")}
-              removeFromCart={removeFromCart}
-              addToCart={addToCart}
-              getQuantity={getQuantity}
-            />
-            <Produto
-              id="acompanhamentos"
-              title="Acompanhamentos"
-              products={products.filter(product => product.category === "ACOMPANHAMENTOS")}
-              removeFromCart={removeFromCart}
-              addToCart={addToCart}
-              getQuantity={getQuantity}
-            />
-            {/* <Produto
-              id="bebidas"
-              title="Bebidas"
-              products={products.filter(product => product.category === "BEBIDAS")}
-              removeFromCart={removeFromCart}
-              addToCart={addToCart}
-              getQuantity={getQuantity}
-            /> */}
-          </>
+          <Produto
+            products={filteredProducts}
+            removeFromCart={removeFromCart}
+            addToCart={addToCart}
+            getQuantity={getQuantity}
+          />
         )}
         <button onClick={() => {navigate('/carrinho')}} label="Ir para o carrinho" className={styles.irCarrinho}>({getTotalQuantity()}) Ir para o carrinho</button>
       </main>

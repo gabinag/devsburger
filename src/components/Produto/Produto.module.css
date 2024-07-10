@@ -1,11 +1,8 @@
-.produto h2 {
-    padding: 2.5rem 0rem 1rem;
-}
-
 .wrapCards {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
+    margin: 2rem 0;
 }
 
 .card {
@@ -13,6 +10,7 @@
     border: 1px solid lightgray;
     border-radius: 1rem;
     padding: 1rem;
+    position: relative;
 }
 
 .card img {
@@ -39,7 +37,14 @@
     justify-content: space-between;
 }
 
-.wrapQtd {
-    display: flex;
-    gap: .2rem;
+.qtd {
+    position: absolute;
+    top: -1.2rem;
+    right: -1rem;
+    background-color: orange;
+    padding: 1rem 1.4rem;
+    border-radius: 2rem;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: bold;
 }
