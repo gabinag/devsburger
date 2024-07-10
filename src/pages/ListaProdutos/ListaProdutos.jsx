@@ -6,6 +6,7 @@ import styles from './ListaProdutos.module.css';
 import { Banner } from '../../components/Banner/Banner';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
+import { Produto } from '../../components/Produto/Produto';
 
 export const ListaProdutos = () => {
   const navigate = useNavigate();
@@ -30,34 +31,65 @@ export const ListaProdutos = () => {
     return cart.reduce((total, product) => total + product.quantity, 0);
   };
 
+  const scrollToCategory = (category) => {
+    const element = document.getElementById(category);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <div>
       <Header/>
       <Banner/>
-      <div className={styles.listaProdutos}>
-          {products.length === 0 ? (
-            <p className={styles.loading}>Carregando produtos...</p>
-          ) : (
-              <section className={styles.wrapCards}>
-              {products.map((product) => (
-                <div className={styles.card} key={product.id}>
-                  <img src={product.image} alt=""/>
-                  <h3>{product.name}</h3>
-                  <p className={styles.desc}>{product.description}</p>
-                  <div className={styles.wrapFlex}>
-                    <p>R${product.price}</p>
-                    <div className={styles.wrapQtd}>
-                      <button onClick={() => removeFromCart(product.id)}>-</button>
-                      <p>{getQuantity(product.id)}</p>
-                      <button onClick={() => addToCart(product)}>+</button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-              </section>
-          )}
-          <button onClick={() => {navigate('/carrinho')}} label="Ir para o carrinho" className={styles.irCarrinho}>({getTotalQuantity()}) Ir para o carrinho</button>
-      </div>
+      <main className={styles.listaProdutos}>
+        <h1>Nossos produtos</h1>
+        <ul>
+          <li onClick={() => scrollToCategory("hamburgueres")}>Hambúrgueres</li>
+          <li onClick={() => scrollToCategory("combos")}>Combos</li>
+          <li onClick={() => scrollToCategory("acompanhamentos")}>Acompanhamentos</li>
+          <li onClick={() => scrollToCategory("bebidas")}>Bebidas</li>
+        </ul>
+        {products.length === 0 ? (
+          <p className={styles.loading}>Carregando produtos...</p>
+        ) : (
+          <>
+            <Produto
+              id="hamburgueres"
+              title="Hambúrgueres"
+              products={products.filter(product => product.category === "HAMBURGUERES")}
+              removeFromCart={removeFromCart}
+              addToCart={addToCart}
+              getQuantity={getQuantity}
+            />
+            <Produto
+              id="combos"
+              title="Combos"
+              products={products.filter(product => product.category === "COMBOS")}
+              removeFromCart={removeFromCart}
+              addToCart={addToCart}
+              getQuantity={getQuantity}
+            />
+            <Produto
+              id="acompanhamentos"
+              title="Acompanhamentos"
+              products={products.filter(product => product.category === "ACOMPANHAMENTOS")}
+              removeFromCart={removeFromCart}
+              addToCart={addToCart}
+              getQuantity={getQuantity}
+            />
+            {/* <Produto
+              id="bebidas"
+              title="Bebidas"
+              products={products.filter(product => product.category === "BEBIDAS")}
+              removeFromCart={removeFromCart}
+              addToCart={addToCart}
+              getQuantity={getQuantity}
+            /> */}
+          </>
+        )}
+        <button onClick={() => {navigate('/carrinho')}} label="Ir para o carrinho" className={styles.irCarrinho}>({getTotalQuantity()}) Ir para o carrinho</button>
+      </main>
       <Footer/>
     </div>
   )
