@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import styles from './Dados.module.css';
 import apiDevsBurger from '../../services/apiDevsBurger';
+import apiCep from '../../services/apiCep';
 import { Botao } from '../../components/Botao/Botao';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
@@ -11,6 +12,8 @@ export const Dados = () => {
   const { cart } = useContext(CartContext);
   const navigate = useNavigate();
   const [deliveryOption, setDeliveryOption] = useState('delivery');
+  const [cep, setCep] = useState('');
+  const [endereco, setEndereco] = useState({});
   const [form, setForm] = useState({
     name: '',
     phone: '',
@@ -76,6 +79,32 @@ export const Dados = () => {
     setDeliveryOption(e.target.value);
   };
 
+  const consultaCep = async () => {
+    if (cep.length === 8) {
+      try {
+        const response = await apiCep.get(`/${cep}/json/`);
+        if (response.data.erro) {
+          alert('CEP não encontrado.');
+        } else {
+          setEndereco(response.data);
+          setForm((prevForm) => ({
+            ...prevForm,
+            address: {
+              ...prevForm.address,
+              logradouro: response.data.logradouro,
+              bairro: response.data.bairro
+            }
+          }));
+        }
+      } catch (error) {
+        console.error('Erro ao consultar CEP:', error);
+        alert('Erro ao consultar CEP. Por favor, tente novamente.');
+      }
+    } else {
+      alert('CEP inválido. Por favor, digite um CEP com 8 dígitos.');
+    }
+  };
+
   return (
     <>
       <Header/>
@@ -123,9 +152,10 @@ export const Dados = () => {
                       <input
                         type="text"
                         name="cep"
-                        onChange={handleChange}
+                        onChange={(e) => setCep(e.target.value)}
+                        value={cep}
                       />
-                      <button className={styles.btnCep}>Pesquisar</button>
+                      <button type="button" className={styles.btnCep} onClick={consultaCep}>Pesquisar</button>
                     </div>
                   </div>
                   <div className={styles.wrapInputs}>
