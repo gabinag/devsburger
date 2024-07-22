@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import apiDevsBurger from '../../services/apiDevsBurger';
 import styles from './Pedido.module.css';
+import { Header } from '../../components/Header/Header';
 
 export const Pedido = () => {
     const [order, setOrder] = useState(null);
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(true); 
     const location = useLocation();
 
     useEffect(() => {
@@ -13,6 +15,8 @@ export const Pedido = () => {
 
         if (!orderId) {
             console.error('ID do pedido não encontrado');
+            setMessage('Não há pedidos feitos, selecione os itens no carrinho em Produtos');
+            setLoading(false); 
             return;
         }
 
@@ -24,9 +28,11 @@ export const Pedido = () => {
                 if (!order || isOrderUpdated(order, fetchedOrder)) {
                     setOrder(fetchedOrder);
                     updateMessage(fetchedOrder.status, fetchedOrder.deliveryMethod);
-                } 
+                }
+                setLoading(false); 
             } catch (error) {
                 console.error('Erro ao buscar pedido:', error);
+                setLoading(false); 
             }
         };
 
@@ -35,7 +41,7 @@ export const Pedido = () => {
         const intervalId = setInterval(fetchOrder, 5000); 
         return () => clearInterval(intervalId); 
         
-    }, [order]); 
+    }, [order]);
 
     useEffect(() => {
         if (location.state && location.state.message) {
@@ -63,16 +69,25 @@ export const Pedido = () => {
     };
 
     return (
-        <div className={styles.orderStatus}>
-            {order ? (
-                <>
-                    <h1>Status do Pedido</h1>
-                    <p>Seu pedido foi para a cozinha</p>
-                    <p>{message}</p>
-                </>
-            ) : (
-                <p>Carregando...</p>
-            )}
-        </div>
+        <>
+            <Header/>
+            <div className={styles.orderStatus}>
+                {loading ? (
+                    <p>Carregando...</p>
+                ) : (
+                    <>
+                        {order ? (
+                            <>
+                                <h1>Status do Pedido</h1>
+                                <p>Seu pedido foi para a cozinha</p>
+                                <p>{message}</p>
+                            </>
+                        ) : (
+                            <p>Não há pedidos feitos no momento, selecione os itens que deseja em Produtos.</p>
+                        )}
+                    </>
+                )}
+            </div>
+        </>
     );
 };
