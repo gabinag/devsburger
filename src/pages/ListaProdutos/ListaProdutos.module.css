@@ -43,5 +43,28 @@
     background-color: gray;
     font-size: 1.4rem;
     color: #fff;
-    cursor: pointer
+    cursor: pointer;
+    z-index: 2;
+}
+
+@media (max-width: 600px) {
+    .listaProdutos h1 {
+        margin: 0 1rem;
+    }
+
+    .listaProdutos ul {
+        overflow-x: scroll; 
+        scrollbar-width: none; 
+        -ms-overflow-style: none;
+        gap: 1rem;
+        margin: 0 1rem;
+    }
+    .listaProdutos ul::-webkit-scrollbar {
+        display: none;
+    }
+
+    .irCarrinho {
+        bottom: 1rem;
+        right: 1rem;
+    }
 }

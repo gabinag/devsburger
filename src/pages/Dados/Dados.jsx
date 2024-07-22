@@ -21,6 +21,7 @@ export const Dados = () => {
       complemento: ''
     },
     paymentMethod: '',
+    status: 'pending'
   });
 
   const handleChange = (e) => {
@@ -52,6 +53,7 @@ export const Dados = () => {
 
     const orderData = {
       ...form,
+      deliveryMethod: deliveryOption,
       address: formattedAddress, 
       items: cart.map(item => ({
         productId: item.id,
@@ -60,9 +62,10 @@ export const Dados = () => {
     };
 
     try {
-      await apiDevsBurger.post('/order', orderData);
-      alert('Pedido realizado com sucesso!');
-      navigate('/');
+      const response = await apiDevsBurger.post('/order', orderData);
+      const orderId = response.data.id;
+      localStorage.setItem('orderId', orderId);
+      navigate('/pedido', { state: { message: deliveryOption === 'delivery' ? 'Seu pedido está indo até você' : 'Seu pedido está pronto para ser retirado' } });
     } catch (error) {
       console.error('Erro ao realizar pedido:', error);
       alert('Erro ao realizar pedido. Por favor, tente novamente.');
@@ -191,7 +194,7 @@ export const Dados = () => {
                     onChange={handleChange}
                     required
                   >
-                    <option value="" disabled selected hidden>Selecionar</option>
+                    <option value="" disabled hidden>Selecionar</option>
                     <option value="Cartão">Cartão de Crédito</option>
                     <option value="Dinheiro">Dinheiro</option>
                     <option value="Pix">Pix</option>

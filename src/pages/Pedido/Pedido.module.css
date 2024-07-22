@@ -1,0 +1,7 @@
+.pedido {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: min(95rem, 100%);
+}

@@ -39,10 +39,10 @@
 
 .qtd {
     position: absolute;
-    top: -1.2rem;
+    top: -1rem;
     right: -1rem;
     background-color: orange;
-    padding: 1rem 1.4rem;
+    padding: .6rem 1rem;
     border-radius: 2rem;
     font-size: 1.4rem;
     color: #fff;

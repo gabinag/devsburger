@@ -8,7 +8,6 @@ export const Header = () => {
             <ul className={styles.headerList}>
                 <li>Produtos</li>
                 <li>Sobre</li> 
-                {/* horário de funcionamento, como fazer pedido, como entrar em contato, endereço, redirecionamento para os produtos */}
                 <li>Meu pedido</li>
             </ul>
         </nav>
