@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
+import { PedidoContext } from '../../context/PedidoContext';
 import styles from './Dados.module.css';
 import apiDevsBurger from '../../services/apiDevsBurger';
 import apiCep from '../../services/apiCep';
@@ -10,6 +11,7 @@ import { Footer } from '../../components/Footer/Footer';
 
 export const Dados = () => {
   const { cart } = useContext(CartContext);
+  const { setMessage, setDeliveryMethod } = useContext(PedidoContext);
   const navigate = useNavigate();
   const [deliveryOption, setDeliveryOption] = useState('delivery');
   const [cep, setCep] = useState('');
@@ -53,7 +55,6 @@ export const Dados = () => {
     ? `${form.address.logradouro}, ${form.address.numero} - ${form.address.bairro}${form.address.complemento ? ` (${form.address.complemento})` : ''}`
     : 'retirada na loja';
 
-
     const orderData = {
       ...form,
       deliveryMethod: deliveryOption,
@@ -68,7 +69,11 @@ export const Dados = () => {
       const response = await apiDevsBurger.post('/order', orderData);
       const orderId = response.data.id;
       localStorage.setItem('orderId', orderId);
-      navigate('/pedido', { state: { message: deliveryOption === 'delivery' ? 'Seu pedido está indo até você' : 'Seu pedido está pronto para ser retirado' } });
+      localStorage.setItem('deliveryMethod', deliveryOption);
+      setDeliveryMethod(deliveryOption); // Atualiza o contexto
+      setMessage('Seu pedido foi para a cozinha e está sendo preparado!'); // Atualiza o contexto
+      localStorage.setItem('message', 'Seu pedido foi para a cozinha e está sendo preparado!');
+      navigate('/pedido');
     } catch (error) {
       console.error('Erro ao realizar pedido:', error);
       alert('Erro ao realizar pedido. Por favor, tente novamente.');
