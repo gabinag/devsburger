@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import apiDevsBurger from '../../services/apiDevsBurger';
 import styles from './Pedido.module.css';
 import { Header } from '../../components/Header/Header';
+import { Footer } from '../../components/Footer/Footer';
 
 export const Pedido = () => {
     const [order, setOrder] = useState(null);
@@ -56,6 +57,8 @@ export const Pedido = () => {
             } else if (deliveryMethod === 'retirar') {
                 setMessage('O seu pedido está pronto! Retire na loja');
             }
+        } else if (status === 'pending') {
+            setMessage('Seu pedido foi para a cozinha e está sendo preparado!');
         } else {
             setMessage('');
         }
@@ -71,16 +74,25 @@ export const Pedido = () => {
     return (
         <>
             <Header/>
-            <div className={styles.orderStatus}>
+            <div className={styles.pedido}>
                 {loading ? (
                     <p>Carregando...</p>
                 ) : (
                     <>
                         {order ? (
                             <>
-                                <h1>Status do Pedido</h1>
-                                <p>Seu pedido foi para a cozinha</p>
-                                <p>{message}</p>
+                                <p className={styles.notific}>{message}</p>
+                                <div className={styles.wrapInfos}>
+                                    <div>
+                                        <p>Volte nesta tela para acompanhar seu pedido</p>
+                                    </div>
+                                    <div>
+                                        <p>Tempo médio de espera é de 40 min</p>
+                                    </div>
+                                    <div>
+                                        <p>Entre em contato conosco pelo nosso WhatsApp</p>
+                                    </div>
+                                </div>
                             </>
                         ) : (
                             <p>Não há pedidos feitos no momento, selecione os itens que deseja em Produtos.</p>
@@ -88,6 +100,7 @@ export const Pedido = () => {
                     </>
                 )}
             </div>
+            <Footer/>
         </>
     );
 };
