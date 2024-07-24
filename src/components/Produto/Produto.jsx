@@ -10,7 +10,7 @@ export const Produto = ({ products, addToCart, getQuantity }) => {
           <p className={styles.desc}>{product.description}</p>
           <div className={styles.wrapFlex}>
             <p>R${product.price}</p>
-            <button onClick={() => addToCart(product)}>Adicionar ao carrinho</button>
+            <button onClick={() => addToCart(product)}>+ Adicionar</button>
           </div>
           <div className={styles.qtd}>{getQuantity(product.id)}</div>
         </div>

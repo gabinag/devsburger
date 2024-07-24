@@ -7,9 +7,9 @@ export const Header = () => {
         <nav className={styles.headerNav}>
             <p>Logo</p>
             <ul className={styles.headerList}>
-                <li><Link to="/">Produtos</Link></li>
-                <li><Link to="/sobre">Sobre</Link></li> 
-                <li><Link to="/pedido">Meu Pedido</Link></li>
+                <li><Link to="/" className={styles.link}>Produtos</Link></li>
+                <li><Link to="/sobre" className={styles.link}>Sobre</Link></li> 
+                <li><Link to="/pedido" className={styles.link}>Meu Pedido</Link></li>
             </ul>
         </nav>
     </header>

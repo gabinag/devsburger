@@ -2,7 +2,27 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    margin: 2rem 0;
+    margin: 2rem auto;
+    justify-content: center;
+}
+
+@media (min-width: 465px) {
+    .wrapCards {
+        max-width: 46.5rem;
+        justify-content: flex-start;
+    }
+}
+
+@media (min-width: 706px) {
+    .wrapCards {
+        max-width: 70.6rem;
+    }
+}
+
+@media (min-width: 948px) {
+    .wrapCards {
+        max-width: 95rem;
+    }
 }
 
 .card {
@@ -35,6 +55,16 @@
 .wrapFlex {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-top: .5rem;
+}
+
+.wrapFlex button {
+    border: none;
+    background-color: gray;
+    color: #fff;
+    padding: .5rem 1rem;
+    border-radius: 2rem;
 }
 
 .qtd {

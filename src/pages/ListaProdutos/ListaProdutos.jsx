@@ -34,36 +34,41 @@ export const ListaProdutos = () => {
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
+    document.querySelector(`.${styles.listaProdutos}`).scrollIntoView({ behavior: 'smooth' });
   };
 
   const filteredProducts = products.filter(product => product.category === selectedCategory);
 
 
   return (
-    <div>
+    <>
       <Header/>
       <Banner/>
-      <main className={styles.listaProdutos}>
-        <h1>Nossos produtos</h1>
-        <ul>
-          <li onClick={() => handleCategoryClick("HAMBURGUERES")}>Hambúrgueres</li>
-          <li onClick={() => handleCategoryClick("COMBOS")}>Combos</li>
-          <li onClick={() => handleCategoryClick("ACOMPANHAMENTOS")}>Acompanhamentos</li>
-          <li onClick={() => handleCategoryClick("BEBIDAS")}>Bebidas</li>
-        </ul>
-        {filteredProducts.length === 0 ? (
-          <p className={styles.loading}>Carregando produtos...</p>
-        ) : (
-          <Produto
-            products={filteredProducts}
-            removeFromCart={removeFromCart}
-            addToCart={addToCart}
-            getQuantity={getQuantity}
-          />
-        )}
-        <button onClick={() => {navigate('/carrinho')}} label="Ir para o carrinho" className={styles.irCarrinho}>({getTotalQuantity()}) Ir para o carrinho</button>
-      </main>
+      <div className={styles.listaProdutos}>
+        <section className={styles.navProdutos}>
+            <h1>Nosso menu</h1>
+            <ul>
+              <li onClick={() => handleCategoryClick("HAMBURGUERES")} className={selectedCategory === "HAMBURGUERES" ? styles.selected : ''}>Hambúrgueres</li>
+              <li onClick={() => handleCategoryClick("COMBOS")} className={selectedCategory === "COMBOS" ? styles.selected : ''}>Combos</li>
+              <li onClick={() => handleCategoryClick("ACOMPANHAMENTOS")} className={selectedCategory === "ACOMPANHAMENTOS" ? styles.selected : ''}>Acompanhamentos</li>
+              <li onClick={() => handleCategoryClick("BEBIDAS")} className={selectedCategory === "BEBIDAS" ? styles.selected : ''}>Bebidas</li>
+            </ul>
+        </section>
+        <section>
+          {filteredProducts.length === 0 ? (
+            <p className={styles.loading}>Carregando produtos...</p>
+          ) : (
+            <Produto
+              products={filteredProducts}
+              removeFromCart={removeFromCart}
+              addToCart={addToCart}
+              getQuantity={getQuantity}
+            />
+          )}
+          <button onClick={() => {navigate('/carrinho')}} label="Ir para o carrinho" className={styles.irCarrinho}>({getTotalQuantity()}) Ir para o carrinho</button>
+        </section>
+      </div>
       <Footer/>
-    </div>
+    </>
   )
 }

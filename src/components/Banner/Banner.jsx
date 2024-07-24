@@ -1,6 +1,6 @@
-import styles from './Banner.module.css'
-import { Botao } from '../Botao/Botao'
-import imgBurger from '../../assets/burger.png'
+import styles from './Banner.module.css';
+import { Botao } from '../Botao/Botao';
+import imgBurger from '../../assets/burger.png';
 
 export const Banner = () => {
   return (
@@ -9,8 +9,8 @@ export const Banner = () => {
             <img src={imgBurger} alt="" />
             <div>
               <h1>O melhor hambúrguer você encontra no Devs Burger</h1>
-              <p>Veja nossos deliciosos hambúrgueres e faça seu pedido</p>
-              <Botao label="Ver produtos"/>
+              <p>Aqui você dá um run na comilança e fica em loop</p>
+              <Botao label="Faça seu pedido"/>
             </div>
         </div>
     </div>

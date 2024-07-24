@@ -1,0 +1,16 @@
+.sobre {
+    width: min(95rem, 100%);
+    margin: auto;
+}
+
+.wrapBannerSobre {
+    background-color: lightgray;
+    height: 65vh;
+    display: flex;
+}
+
+.bannerSobre {
+    width: min(95rem, 100%);
+    margin: auto;
+    
+}

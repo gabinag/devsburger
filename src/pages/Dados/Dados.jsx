@@ -70,8 +70,8 @@ export const Dados = () => {
       const orderId = response.data.id;
       localStorage.setItem('orderId', orderId);
       localStorage.setItem('deliveryMethod', deliveryOption);
-      setDeliveryMethod(deliveryOption); // Atualiza o contexto
-      setMessage('Seu pedido foi para a cozinha e está sendo preparado!'); // Atualiza o contexto
+      setDeliveryMethod(deliveryOption); 
+      setMessage('Seu pedido foi para a cozinha e está sendo preparado!'); 
       localStorage.setItem('message', 'Seu pedido foi para a cozinha e está sendo preparado!');
       navigate('/pedido');
     } catch (error) {
