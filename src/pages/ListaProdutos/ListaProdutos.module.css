@@ -54,6 +54,11 @@
     z-index: 2;
 }
 
+.infoBottom {
+    width: min(95rem, 100%);
+    margin: auto;
+}
+
 @media (max-width: 60rem) {
     .navProdutos h1 {
         margin: 0 1rem .5rem;

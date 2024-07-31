@@ -67,6 +67,20 @@ export const ListaProdutos = () => {
           )}
           <button onClick={() => {navigate('/carrinho')}} label="Ir para o carrinho" className={styles.irCarrinho}>({getTotalQuantity()}) Ir para o carrinho</button>
         </section>
+        <section className={styles.infoBottom}>
+          <div className={styles.infoPix}>
+            <h2>Aceitamos Pix</h2>
+            <p>Além de cartão de crédito/débito e dinheiro, também aceitamos Pix</p>
+          </div>
+          <div className={styles.infoOnline}>
+            <h2>Pedidos Online</h2>
+            <p>Faça o seu pedido online de forma prática e sem cadastro</p>
+          </div>
+          <div className={styles.infoDelivery}>
+            <h2>Delivery</h2>
+            <p>O pedido vai até você ou retire na loja, você escolhe</p>
+          </div>
+        </section>
       </div>
       <Footer/>
     </>

@@ -4,11 +4,13 @@ import styles from './Pedido.module.css';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 import { PedidoContext } from '../../context/PedidoContext';
+import { CartContext } from '../../context/CartContext';
 
 export const Pedido = () => {
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
     const { message, setMessage, deliveryMethod, setDeliveryMethod } = useContext(PedidoContext);
+    const { cart } = useContext(CartContext);
 
     const updateMessage = useCallback((status, deliveryMethod) => {
         let newMessage = '';
@@ -19,12 +21,14 @@ export const Pedido = () => {
             } else if (deliveryMethod === 'retirar') {
                 newMessage = 'O seu pedido está pronto! Retire na loja';
             }
+        } else if (status === 'doing') {
+            newMessage = 'Seu pedido está sendo preparado';
         } else if (status === 'pending') {
-            newMessage = 'Seu pedido foi para a cozinha e está sendo preparado!';
+            newMessage = 'Aguardando a aprovação do pedido...';
         }
 
         setMessage(newMessage);
-        localStorage.setItem('message', newMessage); // Armazena a mensagem no localStorage
+        localStorage.setItem('message', newMessage); 
     }, [setMessage]);
 
     useEffect(() => {
@@ -79,6 +83,23 @@ export const Pedido = () => {
                         {order ? (
                             <>
                                 <p className={styles.notific}>{message}</p>
+                                <div className={styles.orderDetails}>
+                                    {deliveryMethod === 'delivery' && (
+                                        <p><strong>Endereço de entrega:</strong> {order.address}</p>
+                                    )}
+                                    {cart && cart.length > 0 && (
+                                        <>
+                                            <h2>Itens do Pedido</h2>
+                                            <ul>
+                                                {cart.map(item => (
+                                                    <li key={item.id}>
+                                                        {item.name || 'Produto desconhecido'} - Quantidade: {item.quantity}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </>
+                                    )}
+                                </div>
                                 <div className={styles.wrapInfos}>
                                     <div>
                                         <p>Volte nesta tela para acompanhar seu pedido</p>
