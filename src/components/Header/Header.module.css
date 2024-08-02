@@ -19,3 +19,44 @@
 .link {
     color: #000;
 }
+
+.hamburger {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .headerNav {
+        padding: 1rem 2rem;
+    }
+    .headerList {
+        position: absolute;
+        top: 4.5rem;
+        flex-direction: column;
+        align-items: center;
+        background-color: gray;
+        width: 100%;
+        left: 0;
+        padding: 2rem 0;
+        transition: 0.2s;
+        opacity: 0;
+        pointer-events: none;
+    }
+    .headerList.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .link {
+        transition: .5s;
+    }
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+    .line {
+        display: flex;
+        width: 2rem;
+        height: .3rem;
+        background-color: #000;
+        margin: .4rem 0;
+    }
+}
