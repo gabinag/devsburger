@@ -1,16 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Antonio:wght@100..700&display=swap');
+
+:root {
+  --laranja: #E48900;
+  --marrom: #794800;
+  --marrom-claro: #A76400;
+}
+
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: "Antonio", sans-serif;
   list-style: none;
   text-decoration: none;
+  font-weight: 400;
 }
 
 html {
   font-size: 62.5%;
 }
 
-p, label {
-  font-size: 1.4rem;
+h1, h2, h3 {
+  font-family: "Anton", sans-serif;
 }
-

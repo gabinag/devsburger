@@ -7,6 +7,7 @@ import { Banner } from '../../components/Banner/Banner';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 import { Produto } from '../../components/Produto/Produto';
+import imgBurger from '../../assets/images/burger-home.png';
 
 export const ListaProdutos = () => {
   const navigate = useNavigate();
@@ -46,7 +47,6 @@ export const ListaProdutos = () => {
       <Banner/>
       <div className={styles.listaProdutos}>
         <section className={styles.navProdutos}>
-            <h1>Nosso menu</h1>
             <ul>
               <li onClick={() => handleCategoryClick("HAMBURGUERES")} className={selectedCategory === "HAMBURGUERES" ? styles.selected : ''}>Hambúrgueres</li>
               <li onClick={() => handleCategoryClick("COMBOS")} className={selectedCategory === "COMBOS" ? styles.selected : ''}>Combos</li>
@@ -54,7 +54,7 @@ export const ListaProdutos = () => {
               <li onClick={() => handleCategoryClick("BEBIDAS")} className={selectedCategory === "BEBIDAS" ? styles.selected : ''}>Bebidas</li>
             </ul>
         </section>
-        <section>
+        <section className={styles.loadProdutos}>
           {filteredProducts.length === 0 ? (
             <p className={styles.loading}>Carregando produtos...</p>
           ) : (
@@ -68,17 +68,19 @@ export const ListaProdutos = () => {
           <button onClick={() => {navigate('/carrinho')}} label="Ir para o carrinho" className={styles.irCarrinho}>({getTotalQuantity()}) Ir para o carrinho</button>
         </section>
         <section className={styles.infoBottom}>
-          <div className={styles.infoPix}>
-            <h2>Aceitamos Pix</h2>
-            <p>Além de cartão de crédito/débito e dinheiro, também aceitamos Pix</p>
-          </div>
-          <div className={styles.infoOnline}>
-            <h2>Pedidos Online</h2>
-            <p>Faça o seu pedido online de forma prática e sem cadastro</p>
-          </div>
-          <div className={styles.infoDelivery}>
-            <h2>Delivery</h2>
-            <p>O pedido vai até você ou retire na loja, você escolhe</p>
+          <div className={styles.infoWrapper}>
+            <img src={imgBurger} className={styles.imgBurger} alt="Hambúrguer ilustrativo" />
+            <div>
+              <div className={styles.infoItem}>
+                <p>Aceitamos Pix, Cartão, VR e Dinheiro</p>
+              </div>
+              <div className={styles.infoItem}>
+                <p>Pedidos Online e sem necessidade de cadastro</p>
+              </div>
+              <div className={styles.infoItem}>
+                <p>Delivery e Retirada no Local</p>
+              </div>
+            </div>
           </div>
         </section>
       </div>

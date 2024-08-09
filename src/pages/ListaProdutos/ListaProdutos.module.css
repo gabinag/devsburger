@@ -1,20 +1,16 @@
 .listaProdutos {
-    margin: 2rem auto 3rem;
+    margin: auto;
     min-height: 100vh;
+    background-color: var(--marrom);
+    padding: 2rem 0 3rem;
 }
 
 .navProdutos {
     position: sticky;
     top: 0;
-    background-color: #fff;
-    z-index: 1;
+    z-index: 2;
     padding: 1rem 0;
-}
-
-.navProdutos h1 {
-    font-size: 1.6rem;
-    color: gray;
-    margin-bottom: 1rem;
+    background-color: var(--marrom);
 }
 
 .navProdutos ul {
@@ -24,39 +20,68 @@
 
 .navProdutos ul li {
     font-size: 1.6rem;
-    background-color: lightgray;
+    background-color: #fff;
     padding: .5rem 1rem;
-    border-radius: 2rem;
+    border-radius: 1rem;
     cursor: pointer;
-    color: #fff;
+    color: var(--marrom);
 }
 
 .navProdutos ul li.selected {
-    background-color: darkgray; 
+    background-color: var(--marrom-claro); 
+    color: var(--laranja);
+}
+
+.loadProdutos {
+    min-height: 50vh;
 }
 
 .loading {
     text-align: center;
     margin-top: 6rem;
+    font-size: 1.6rem;
+    color: #fff;
 }
 
 .irCarrinho {
     position: fixed;
-    bottom: 4rem;
+    bottom: 3rem;
     right: 3rem;
-    padding: .5rem 1rem;
+    padding: .8rem 1.5rem;
     border: none;
-    border-radius: 2rem;
-    background-color: gray;
-    font-size: 1.4rem;
+    border-radius: 1rem;
+    background-color: var(--laranja);
+    font-size: 1.8rem;
+    font-weight: 400;
     color: #fff;
     cursor: pointer;
     z-index: 2;
 }
 
 .infoBottom {
+    background-color: var(--marrom-claro);
+    background-image: url('../../assets/images/bg-devsburger.png');
+    background-repeat: no-repeat;
+    padding: 2rem 0;
+}
+
+.infoWrapper {
     width: min(95rem, 100%);
     margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5rem;
+}
+
+.imgBurger {
+    width: min(40rem, 100%);
+}
+
+.infoItem {
+    margin-bottom: 3rem;
+    color: #fff;
+    font-size: 2rem;
 }
 
 @media (max-width: 60rem) {
@@ -78,6 +103,19 @@
     .irCarrinho {
         bottom: 1rem;
         right: 1rem;
+    }
+    .infoWrapper {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .imgBurger {
+        width: min(20rem, 100%);
+    }
+    .infoItem {
+        text-align: center;
+        font-size: 1.6rem;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
     }
 }
 

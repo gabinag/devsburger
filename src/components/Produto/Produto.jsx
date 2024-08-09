@@ -12,7 +12,9 @@ export const Produto = ({ products, addToCart, getQuantity }) => {
             <p>R${product.price}</p>
             <button onClick={() => addToCart(product)}>+ Adicionar</button>
           </div>
-          <div className={styles.qtd}>{getQuantity(product.id)}</div>
+          {getQuantity(product.id) > 0 && (
+            <div className={styles.qtd}>{getQuantity(product.id)}</div>
+          )}
         </div>
       ))}
     </div>

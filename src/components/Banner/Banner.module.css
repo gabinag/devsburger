@@ -1,59 +1,50 @@
 .banner {
-    background-color: lightgray;
+    background-color: var(--laranja);
     overflow-x: hidden; 
+    padding: 2rem 1rem;
+    text-align: center;
 }
 
 .content {
     display: flex;
-    align-items: center;
-    height: 60vh;
     flex-direction: column;
-    justify-content: center;
-    margin: 0 1rem;
-}
-
-.content div {
-    text-align: center;
-    width: min(53rem, 100%);
-}
-
-.content div h1 {
-    font-size: 1.6rem;
-    margin-top: 1.5rem;
+    justify-content: space-between;
+    max-width: 95rem;
+    margin: auto;
+    color: #fff;
 }
 
 .content div p {
-    font-size: 1.4rem;
-    margin: .5rem 0;
+    margin: .5rem 0 1rem;
+    font-size: 1.6rem;
 }
 
 .content img {
-    width: min(28rem, 35%);
+    width: min(30rem, 100%);
+    margin-top: 1rem; 
+    align-self: center;
 }
 
-@media (min-width: 600px) {
+@media screen and (min-width: 768px) {
+    .banner {
+        text-align: start;
+    }
     .content {
-        width: min(95rem, 100%);
-        margin: auto;
         flex-direction: row;
-        justify-content: space-between;
-        height: 65vh;
+        min-height: 60vh;
     }
-
-    .content div {
-        text-align: end;
+    .content div h1{
+        font-size: 5rem;
+        margin-top: 2rem;
     }
-
-    .content div h1 {
-        font-size: 4rem;
-    }
-
     .content div p {
-        font-size: 1.8rem;
-        margin: 1rem 0;
+        font-size: 2.4rem;
+        max-width: 45rem;
+        margin-bottom: 1.5rem;
     }
-
     .content img {
-        padding-left: 2rem;
+        width: min(40rem, 100%);
+        margin-top: 0; 
+        margin-left: 1rem;
     }
 }

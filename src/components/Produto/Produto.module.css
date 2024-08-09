@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    margin: 2rem auto;
+    margin: 2rem auto 4rem;
     justify-content: center;
 }
 
@@ -31,6 +31,7 @@
     border-radius: 1rem;
     padding: 1rem;
     position: relative;
+    background-color: #fff;
 }
 
 .card img {
@@ -42,14 +43,17 @@
 }
 
 .card h3 {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     margin-top: .5rem;
+    color: var(--laranja);
 }
 
 .desc {
     margin-top: .3rem;
     height: 5rem;
     font-size: 1.3rem;
+    color: var(--marrom);
+    font-weight: 700;
 }
 
 .wrapFlex {
@@ -59,12 +63,20 @@
     margin-top: .5rem;
 }
 
+.wrapFlex p {
+    font-weight: 700;
+    color: var(--marrom);
+    font-size: 1.6rem;
+}
+
 .wrapFlex button {
     border: none;
-    background-color: gray;
+    background-color: var(--laranja);
+    font-family: "Antonio", sans-serif;
+    font-weight: 600;
     color: #fff;
     padding: .5rem 1rem;
-    border-radius: 2rem;
+    border-radius: 1rem;
 }
 
 .qtd {
@@ -72,7 +84,7 @@
     top: -1rem;
     right: -1rem;
     background-color: orange;
-    padding: .6rem 1rem;
+    padding: .6rem 1.3rem;
     border-radius: 2rem;
     font-size: 1.4rem;
     color: #fff;
