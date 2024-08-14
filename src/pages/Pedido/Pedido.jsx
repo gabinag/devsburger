@@ -25,6 +25,8 @@ export const Pedido = () => {
             newMessage = 'Seu pedido está sendo preparado';
         } else if (status === 'pending') {
             newMessage = 'Aguardando a aprovação do pedido...';
+        } else if (status === 'canceled') {
+            newMessage = 'Seu pedido foi cancelado. Em caso de dúvida, entre em contato conosco.';
         }
 
         setMessage(newMessage);
@@ -72,6 +74,23 @@ export const Pedido = () => {
         return prevOrder.status !== nextOrder.status;
     };
 
+    async function handleCancelOrder(id) {
+        try {
+            await apiDevsBurger.post("/order/status", { orderId: id, status: "canceled" });
+        
+            setOrder((prevOrder) => {
+                if (prevOrder && prevOrder.id === id) {
+                    return { ...prevOrder, status: "canceled" };
+                }
+                return prevOrder;
+            });
+            
+            updateMessage("canceled", deliveryMethod);
+        } catch (error) {
+            console.error('Erro ao cancelar pedido:', error);
+        }
+    }
+
     return (
         <>
             <Header />
@@ -111,6 +130,12 @@ export const Pedido = () => {
                                         <p>Entre em contato conosco pelo nosso WhatsApp</p>
                                     </div>
                                 </div>
+                                <button
+                                    className={styles.cancelButton}
+                                    onClick={() => handleCancelOrder(order.id)} 
+                                >
+                                    Cancelar Pedido
+                                </button>
                             </>
                         ) : (
                             <p>Não há pedidos feitos no momento, selecione os itens que deseja em Produtos.</p>
