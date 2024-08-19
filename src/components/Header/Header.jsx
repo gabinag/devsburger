@@ -20,7 +20,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.headerNav}>
-        <img src={logo} alt="Logotipo da Devs Burger" className={styles.logo}/>
+        <Link to="/"><img src={logo} alt="Logotipo da Devs Burger" className={styles.logo}/></Link>
         <ul className={`${styles.headerList} ${isMenuOpen ? styles.active : ''}`}>
             <li><Link to="/" className={`${styles.link} ${activeLink === '/' ? styles.activeLink : ''}`}>Produtos</Link></li>
             <li><Link to="/sobre" className={`${styles.link} ${activeLink === '/sobre' ? styles.activeLink : ''}`}>Sobre</Link></li> 

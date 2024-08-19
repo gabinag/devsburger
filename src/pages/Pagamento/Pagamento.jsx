@@ -38,6 +38,7 @@ export const Pagamento = () => {
               <option value="Cartão">Cartão de Crédito</option>
               <option value="Dinheiro">Dinheiro</option>
               <option value="Pix">Pix</option>
+              <option value="Voucher">Voucher/Vale Alimentação ou Refeição</option>
             </select>
           </div>
           <div className={styles.wrapBtn}>

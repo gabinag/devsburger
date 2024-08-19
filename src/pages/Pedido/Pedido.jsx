@@ -11,6 +11,7 @@ export const Pedido = () => {
     const [loading, setLoading] = useState(true);
     const { message, setMessage, deliveryMethod, setDeliveryMethod } = useContext(PedidoContext);
     const { cart } = useContext(CartContext);
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     const updateMessage = useCallback((status, deliveryMethod) => {
         let newMessage = '';
@@ -75,6 +76,7 @@ export const Pedido = () => {
     };
 
     async function handleCancelOrder(id) {
+        setIsButtonDisabled(true);
         try {
             await apiDevsBurger.post("/order/status", { orderId: id, status: "canceled" });
         
@@ -88,6 +90,7 @@ export const Pedido = () => {
             updateMessage("canceled", deliveryMethod);
         } catch (error) {
             console.error('Erro ao cancelar pedido:', error);
+            setIsButtonDisabled(false);
         }
     }
 
@@ -133,6 +136,7 @@ export const Pedido = () => {
                                 <button
                                     className={styles.cancelButton}
                                     onClick={() => handleCancelOrder(order.id)} 
+                                    disabled={isButtonDisabled}
                                 >
                                     Cancelar Pedido
                                 </button>

@@ -14,6 +14,11 @@ export const Carrinho = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
+  const handleObservacaoChange = (e) => {
+    const observation = e.target.value;
+    localStorage.setItem('observation', observation);
+  };
+
   return (
     <>
       <Header/>
@@ -44,7 +49,7 @@ export const Carrinho = () => {
             <p className={styles.wrapFlexEnd}>Total: R${calculaPrecoTotal().toFixed(2)}</p>
             <div className={styles.wrapTextArea}>
               <label htmlFor="obs">Observações:</label>
-              <textarea name="obs" id="obs" placeholder='Alguma observação? Ex.: Sem cebola, sem picles...'></textarea>
+              <textarea name="obs" id="obs" placeholder='Alguma observação? Ex.: Sem cebola, sem picles...' onChange={handleObservacaoChange}></textarea>
             </div>
             <div className={styles.wrapFlexEnd}>
               <Botao onClick={() => navigate('/')} label="Voltar"/>

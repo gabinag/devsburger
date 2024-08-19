@@ -20,6 +20,11 @@ export const CartProvider = ({ children }) => {
     sessionStorage.setItem('cart', JSON.stringify(newCart));
   };
 
+  const clearCart = () => {
+    setCart([]);
+    sessionStorage.removeItem('cart'); 
+  };
+
   const addToCart = (item) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
@@ -53,7 +58,7 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );

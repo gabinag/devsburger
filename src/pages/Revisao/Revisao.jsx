@@ -12,17 +12,20 @@ export const Revisao = () => {
   const [form, setForm] = useState({});
   const [deliveryOption, setDeliveryOption] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('');
-  const { cart } = useContext(CartContext); 
+  const [observation, setObservation] = useState('');
+  const { cart, clearCart } = useContext(CartContext); 
 
   useEffect(() => {
     const storedForm = JSON.parse(localStorage.getItem('form'));
     const storedDeliveryOption = localStorage.getItem('deliveryOption');
     const storedPaymentMethod = localStorage.getItem('paymentMethod');
+    const storedObservation = localStorage.getItem('observation');
 
     if (storedForm && storedDeliveryOption && storedPaymentMethod) {
       setForm(storedForm);
       setDeliveryOption(storedDeliveryOption);
       setPaymentMethod(storedPaymentMethod);
+      setObservation(storedObservation || '');
     } else {
       navigate('/dados');
     }
@@ -42,12 +45,19 @@ export const Revisao = () => {
         productId: item.id,
         quantity: item.quantity,
       })),
+      observation: observation || null,
     };
+
+    if (observation.trim() !== '') {
+      orderData.observation = observation;
+    }
 
     try {
       const response = await apiDevsBurger.post('/order', orderData);
       const orderId = response.data.id;
       localStorage.setItem('orderId', orderId);
+      localStorage.removeItem('observation');
+      clearCart();
       navigate('/pedido');
     } catch (error) {
       console.error('Erro ao realizar pedido:', error);
@@ -86,6 +96,13 @@ export const Revisao = () => {
               <p>Nenhum item encontrado no carrinho.</p>
             )}
           </ul>
+
+          {observation && (
+            <div>
+              <h2>Observação</h2>
+              <p>{observation}</p>
+            </div>
+          )}
 
           <div className={styles.wrapBtn}>
             <Botao onClick={handleConfirm} label="Finalizar Pedido" />
