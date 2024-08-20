@@ -6,7 +6,6 @@
     width: min(95rem, 100%);
     margin: auto;
     padding: 1rem 0 2rem;
-    min-height: 90vh;
 }
 
 .carrinho h1 {
@@ -14,10 +13,27 @@
     color: #fff;
 }
 
+.vazio {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-left: 1rem;
+    height: 60vh;
+}
+
+.linkVazio {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
 .wrapGrid {
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    grid-template-columns: 1fr;
     padding: 0 1rem;
+}
+
+.wrapProdutos {
+    min-height: 80vh;
 }
 
 .card {
@@ -45,18 +61,57 @@
 
 .wrapTitle {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
+    align-items: center;
+}
+
+.wrapTitle h3 {
+    color: var(--laranja);
+    font-size: 1.8rem;
+}
+
+.wrapTitle p {
+    color: var(--marrom);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.desc {
+    font-size: 1.3rem;
+    color: var(--marrom);
+    width: min(35rem, 100%);
 }
 
 .wrapQtd {
     display: flex;
-    gap: .2rem;
+    gap: 1rem;
+    align-items: center;
+}
+
+.wrapQtd button {
+    border: none;
+    background-color: var(--laranja);
+    padding: 0rem 1rem;
+    color: #fff;
+    font-size: 2rem;
+    border-radius: .5rem;
+}
+
+.wrapQtd p {
+    font-size: 1.6rem;
+    color: var(--marrom);
 }
 
 .wrapFlexEnd {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
+}
+
+.total {
+    font-size: 1.6rem;
+    color: #fff;
+    margin: 1rem 0 1.5rem;
 }
 
 .wrapTextArea {
@@ -75,9 +130,8 @@ textarea {
     resize: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 640px) {
     .wrapGrid {
-        min-height: 55vh;
         grid-template-columns: 2fr 1fr;
         gap: 5rem;
     }

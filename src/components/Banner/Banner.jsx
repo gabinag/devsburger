@@ -1,6 +1,7 @@
 import styles from './Banner.module.css';
 import { Botao } from '../Botao/Botao';
 import imgBurger from '../../assets/images/img-banner.png';
+import { Link } from 'react-router-dom';
 
 export const Banner = () => {
   return (

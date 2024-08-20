@@ -26,16 +26,16 @@ export const Carrinho = () => {
         <div className={styles.carrinho}>
           <h1>Carrinho</h1>
           {cart.length === 0 ? (
-            <p>Seu carrinho está vazio, volte em <Link to="/">Produtos</Link></p>
+            <p className={styles.vazio}>Seu carrinho está vazio, volte em <Link to="/" className={styles.linkVazio}>Produtos</Link> e selecione "Adicionar" no item que deseja.</p>
           ) : (
             <section className={styles.wrapGrid}>
-              <div>
+              <div className={styles.wrapProdutos}>
                 {cart.map((product) => (
                   <div className={styles.card} key={product.id}>
                     <img src={product.image} alt=""/>
                     <div>
                       <div className={styles.wrapTitle}>
-                        <p>{product.name}</p>
+                        <h3>{product.name}</h3>
                         <p>R${product.price}</p>
                       </div>
                       <div className={styles.wrapDesc}>
@@ -55,7 +55,7 @@ export const Carrinho = () => {
                   <label htmlFor="obs">Observações:</label>
                   <textarea name="obs" id="obs" placeholder='Alguma observação? Ex.: Sem cebola, sem picles...' onChange={handleObservacaoChange}></textarea>
                 </div>
-                <p className={styles.wrapFlexEnd}>Total: R${calculaPrecoTotal().toFixed(2)}</p>
+                <p className={`${styles.wrapFlexEnd} ${styles.total}`}>Valor total: R${calculaPrecoTotal().toFixed(2)}</p>
                 <div className={styles.wrapFlexEnd}>
                   <Botao onClick={() => navigate('/')} label="Voltar"/>
                   <Botao onClick={() => navigate('/dados')} label="Prosseguir"/>
