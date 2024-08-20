@@ -1,24 +1,32 @@
+.bgCarrinho {
+    background-color: var(--marrom-claro);
+}
+
 .carrinho {
-    width: min(50rem, 100%);
-    margin: 1rem auto 2rem;
+    width: min(95rem, 100%);
+    margin: auto;
+    padding: 1rem 0 2rem;
     min-height: 90vh;
 }
 
-.wrapCards {
-    min-height: 55vh;
+.carrinho h1 {
+    margin: 1rem; 
+    color: #fff;
 }
 
-.carrinho h1 {
-    margin-bottom: 2rem; 
+.wrapGrid {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    padding: 0 1rem;
 }
 
 .card {
     display: grid;
-    grid-template-columns: 1.5fr 4fr;
-    border: 1px solid gray;
+    grid-template-columns: 1.2fr 4fr;
     border-radius: 1rem;
     padding: 1rem;
     margin-bottom: 1rem;
+    background-color: #fff;
 }
 
 .card img {
@@ -31,7 +39,13 @@
 
 .wrapFlex {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wrapTitle {
+    display: flex;
+    gap: 2rem;
 }
 
 .wrapQtd {
@@ -48,14 +62,30 @@
 .wrapTextArea {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0 1.5rem;
-    gap: .5rem;
+    gap: 1rem;
+    color: #fff;
+    font-size: 1.6rem;
 }
 
 textarea {
     padding: .5rem;
     border-radius: 1rem;
+    border: none;
     height: 5rem;
     resize: none;
 }
 
+@media screen and (min-width: 768px) {
+    .wrapGrid {
+        min-height: 55vh;
+        grid-template-columns: 2fr 1fr;
+        gap: 5rem;
+    }
+    .wrapDesc {
+        display: flex;
+        justify-content: space-between;
+    }
+    textarea {
+        height: 15rem;
+    }
+}

@@ -20,18 +20,32 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.headerNav}>
-        <Link to="/"><img src={logo} alt="Logotipo da Devs Burger" className={styles.logo}/></Link>
+        <Link to="/">
+          <img src={logo} alt="Logotipo da Devs Burger" className={styles.logo}/>
+        </Link>
         <ul className={`${styles.headerList} ${isMenuOpen ? styles.active : ''}`}>
-            <li><Link to="/" className={`${styles.link} ${activeLink === '/' ? styles.activeLink : ''}`}>Produtos</Link></li>
-            <li><Link to="/sobre" className={`${styles.link} ${activeLink === '/sobre' ? styles.activeLink : ''}`}>Sobre</Link></li> 
-            <li><Link to="/pedido" className={`${styles.link} ${activeLink === '/pedido' ? styles.activeLink : ''}`}>Meu Pedido</Link></li>
+          <li>
+            <Link to="/" className={`${styles.link} ${activeLink === '/' ? styles.underlineLink : ''}`}>
+              Produtos
+            </Link>
+          </li>
+          <li>
+            <Link to="/sobre" className={`${styles.link} ${activeLink === '/sobre' ? styles.underlineLink : ''}`}>
+              Sobre
+            </Link>
+          </li> 
+          <li>
+            <Link to="/pedido" className={`${styles.link} ${activeLink === '/pedido' ? styles.underlineLink : ''}`}>
+              Meu Pedido
+            </Link>
+          </li>
         </ul>
-      <div className={styles.hamburger} onClick={toggleMenu}>
-        <span className={styles.line}></span>
-        <span className={styles.line}></span>
-        <span className={styles.line}></span>
-      </div>
+        <div className={styles.hamburger} onClick={toggleMenu}>
+          <span className={styles.line}></span>
+          <span className={styles.line}></span>
+          <span className={styles.line}></span>
+        </div>
       </nav>
     </header>
-  )
-}
+  );
+};

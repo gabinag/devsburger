@@ -7,7 +7,7 @@
 
 .navProdutos {
     position: sticky;
-    top: 0;
+    top: 0rem;
     z-index: 2;
     padding: 1rem 0;
     background-color: var(--marrom);
@@ -41,7 +41,7 @@
 }
 
 .loadProdutos {
-    min-height: 50vh;
+    min-height: 65vh;
 }
 
 .loading {

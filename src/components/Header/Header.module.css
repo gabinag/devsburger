@@ -29,13 +29,18 @@
     display: none;
 }
 
+.underlineLink {
+    border-bottom: 3px solid var(--laranja); 
+  }
+  
+
 @media screen and (max-width: 600px) {
     .headerNav {
         padding: 1rem 2rem;
     }
     .headerList {
         position: absolute;
-        top: 4.5rem;
+        top: 5.5rem;
         flex-direction: column;
         align-items: center;
         background-color: #fff;
