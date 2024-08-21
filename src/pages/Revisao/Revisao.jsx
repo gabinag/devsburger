@@ -33,7 +33,7 @@ export const Revisao = () => {
 
   const handleConfirm = async () => {
     const formattedAddress = deliveryOption === 'delivery'
-      ? `${form.address.logradouro}, ${form.address.numero} - ${form.address.bairro}${form.address.complemento ? ` (${form.address.complemento})` : ''}`
+      ? `${form.address.logradouro}, ${form.address.numero} - ${form.address.bairro}, ${form.address.localidade} - ${form.address.uf}${form.address.complemento ? ` (${form.address.complemento})` : ''}`
       : 'Retirada na loja';
 
     const orderData = {
@@ -78,7 +78,7 @@ export const Revisao = () => {
           {deliveryOption === 'delivery' && (
             <div>
               <p><strong>Endereço:</strong></p>
-              <p>{`${form.address.logradouro || ''}, ${form.address.numero || ''} - ${form.address.bairro || ''}${form.address.complemento ? ` (${form.address.complemento})` : ''}`}</p>
+              <p>{`${form.address.logradouro || ''}, ${form.address.numero || ''} - ${form.address.bairro || ''}, ${form.address.localidade} - ${form.address.uf}${form.address.complemento ? ` (${form.address.complemento})` : ''}`}</p>
             </div>
           )}
 

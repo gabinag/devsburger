@@ -8,11 +8,6 @@
     padding: 1rem 0 2rem;
 }
 
-.carrinho h1 {
-    margin: 1rem; 
-    color: #fff;
-}
-
 .vazio {
     font-size: 1.6rem;
     color: #fff;
@@ -29,7 +24,7 @@
 .wrapGrid {
     display: grid;
     grid-template-columns: 1fr;
-    padding: 0 1rem;
+    padding: 1rem;
 }
 
 .wrapProdutos {

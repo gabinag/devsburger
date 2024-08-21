@@ -22,3 +22,18 @@ html {
 h1, h2, h3 {
   font-family: "Anton", sans-serif;
 }
+
+.bgPassosPedido {
+  background-color: var(--marrom-claro);
+}
+
+.container {
+  width: min(95rem, 100%);
+  margin: auto;
+  padding: 1rem 0 2rem;
+}
+
+.containerTitle {
+  margin: 1rem; 
+  color: #fff;
+}

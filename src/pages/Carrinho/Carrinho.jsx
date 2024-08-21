@@ -22,9 +22,9 @@ export const Carrinho = () => {
   return (
     <>
       <Header/>
-      <div className={styles.bgCarrinho}>
+      <div className='bgPassosPedido'>
         <div className={styles.carrinho}>
-          <h1>Carrinho</h1>
+          <h1 className='containerTitle'>Carrinho</h1>
           {cart.length === 0 ? (
             <p className={styles.vazio}>Seu carrinho está vazio, volte em <Link to="/" className={styles.linkVazio}>Produtos</Link> e selecione "Adicionar" no item que deseja.</p>
           ) : (

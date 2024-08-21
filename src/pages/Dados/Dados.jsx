@@ -19,6 +19,8 @@ export const Dados = () => {
       logradouro: '',
       numero: '',
       bairro: '',
+      localidade: '',
+      uf: '',
       complemento: ''
     }
   });
@@ -66,7 +68,9 @@ export const Dados = () => {
             address: {
               ...prevForm.address,
               logradouro: response.data.logradouro,
-              bairro: response.data.bairro
+              bairro: response.data.bairro,
+              localidade: response.data.localidade,
+              uf: response.data.uf
             }
           }));
         }
@@ -82,124 +86,148 @@ export const Dados = () => {
   return (
     <>
       <Header />
-      <div className={styles.dados}>
-        <h1>Preencha os campos a seguir</h1>
-        <form onSubmit={handleSubmit}>
-          <div className={styles.wrapForm}>
-            <section className={styles.firstSection}>
-              <label htmlFor="name">Nome</label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-              />
-              <label htmlFor="phone">Telefone</label>
-              <input
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                required
-              />
-              <div>
-                <p>Selecione a forma de entrega:</p>
-                <div className={styles.wrapRadio}>
-                  <div>
-                    <input
-                      type="radio"
-                      id="delivery"
-                      name="entrega"
-                      value="delivery"
-                      checked={deliveryOption === 'delivery'}
-                      onChange={handleOptionChange}
-                    />
-                    <label htmlFor="delivery">Delivery</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="retirar"
-                      name="entrega"
-                      value="retirar"
-                      checked={deliveryOption === 'retirar'}
-                      onChange={handleOptionChange}
-                    />
-                    <label htmlFor="retirar">Retirar na loja</label>
-                  </div>
-                </div>
-              </div>
-              {deliveryOption === 'delivery' && (
+      <div className='bgPassosPedido'>
+        <div className='container'>
+          <h1 className='containerTitle'>Identificação</h1>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.wrapForm}>
+              <section className={styles.sectionForm}>
+                <label htmlFor="name">Nome</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                />
+                <label htmlFor="phone">Telefone</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                />
                 <div>
-                  <div>
-                    <label htmlFor="cep">CEP</label>
+                  <p>Selecione a forma de entrega:</p>
+                  <div className={styles.wrapRadio}>
                     <div>
                       <input
-                        type="text"
-                        name="cep"
-                        onChange={(e) => setCep(e.target.value)}
-                        value={cep}
+                        type="radio"
+                        id="delivery"
+                        name="entrega"
+                        value="delivery"
+                        checked={deliveryOption === 'delivery'}
+                        onChange={handleOptionChange}
                       />
-                      <button type="button" className={styles.btnCep} onClick={consultaCep}>
-                        Pesquisar
-                      </button>
-                    </div>
-                  </div>
-                  <div className={styles.wrapInputs}>
-                    <div>
-                      <label htmlFor="logradouro">Logradouro</label>
-                      <input
-                        type="text"
-                        name="logradouro"
-                        value={form.address.logradouro}
-                        onChange={handleChange}
-                        required
-                      />
+                      <label htmlFor="delivery">Delivery</label>
                     </div>
                     <div>
-                      <label htmlFor="numero">Nº</label>
                       <input
-                        type="number"
-                        name="numero"
-                        value={form.address.numero}
-                        onChange={handleChange}
-                        required
-                        className={styles.sizeInput}
+                        type="radio"
+                        id="retirar"
+                        name="entrega"
+                        value="retirar"
+                        checked={deliveryOption === 'retirar'}
+                        onChange={handleOptionChange}
                       />
-                    </div>
-                  </div>
-                  <div className={styles.wrapInputs}>
-                    <div>
-                      <label htmlFor="bairro">Bairro</label>
-                      <input
-                        type="text"
-                        name="bairro"
-                        value={form.address.bairro}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="complemento">Complemento</label>
-                      <input
-                        type="text"
-                        name="complemento"
-                        value={form.address.complemento}
-                        onChange={handleChange}
-                        className={styles.sizeInput}
-                      />
+                      <label htmlFor="retirar">Retirar na loja</label>
                     </div>
                   </div>
                 </div>
-              )}
-            </section>
-          </div>
-          <div className={styles.wrapBtn}>
-            <Botao onClick={() => navigate('/carrinho')} label="Alterar itens" />
-            <Botao type="submit" label="Prosseguir para pagamento" />
-          </div>
-        </form>
+              </section>
+              <section className={styles.sectionForm}>
+                {deliveryOption === 'delivery' && (
+                  <div>
+                    <div>
+                      <label htmlFor="cep">CEP</label>
+                      <div className={styles.wrapCep}>
+                        <input
+                          type="text"
+                          name="cep"
+                          onChange={(e) => setCep(e.target.value)}
+                          value={cep}
+                        />
+                        <button type="button" className={styles.btnCep} onClick={consultaCep}>
+                          Pesquisar
+                        </button>
+                      </div>
+                    </div>
+                    <div className={styles.wrapInputs}>
+                      <div>
+                        <label htmlFor="logradouro">Logradouro</label>
+                        <input
+                          type="text"
+                          name="logradouro"
+                          value={form.address.logradouro}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="numero">Nº</label>
+                        <input
+                          type="number"
+                          name="numero"
+                          value={form.address.numero}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className={styles.wrapInputs}>
+                      <div>
+                        <label htmlFor="bairro">Bairro</label>
+                        <input
+                          type="text"
+                          name="bairro"
+                          value={form.address.bairro}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="localidade">Cidade</label>
+                        <input
+                          type="text"
+                          name="localidade"
+                          value={form.address.localidade}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className={styles.wrapInputs}>
+                      <div>
+                        <label htmlFor="uf">UF</label>
+                        <input
+                          type="text"
+                          name="uf"
+                          value={form.address.uf}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="complemento">Complemento</label>
+                        <input
+                          type="text"
+                          name="complemento"
+                          value={form.address.complemento}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </section>
+            </div>
+            <div className={styles.wrapBtn}>
+              <Botao onClick={() => navigate('/carrinho')} label="Voltar" />
+              <Botao type="submit" label="Prosseguir" />
+            </div>
+          </form>
+        </div>
       </div>
       <Footer />
     </>
