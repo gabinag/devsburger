@@ -68,44 +68,43 @@ export const Revisao = () => {
   return (
     <>
       <Header />
-      <div className={styles.revisao}>
-        <h1>Revisão do Pedido</h1>
-        <div className={styles.details}>
-          <h2>Identificação</h2>
-          <p><strong>Nome:</strong> {form.name || 'Não disponível'}</p>
-          <p><strong>Telefone:</strong> {form.phone || 'Não disponível'}</p>
-          <p><strong>Forma de Entrega:</strong> {deliveryOption === 'delivery' ? 'Delivery' : 'Retirar na loja'}</p>
-          {deliveryOption === 'delivery' && (
-            <div>
-              <p><strong>Endereço:</strong></p>
-              <p>{`${form.address.logradouro || ''}, ${form.address.numero || ''} - ${form.address.bairro || ''}, ${form.address.localidade} - ${form.address.uf}${form.address.complemento ? ` (${form.address.complemento})` : ''}`}</p>
-            </div>
-          )}
-
-          <p><strong>Forma de Pagamento:</strong> {paymentMethod || 'Não disponível'}</p>
-
-          <h2>Itens do Pedido</h2>
-          <ul>
-            {cart && cart.length > 0 ? (
-              cart.map(item => (
-                <li key={item.id}>
-                  {item.name || 'Produto desconhecido'} - Quantidade: {item.quantity}
-                </li>
-              ))
-            ) : (
-              <p>Nenhum item encontrado no carrinho.</p>
+      <div className="bgPassosPedido">
+        <div className="container">
+          <h1 className="containerTitle">Revisão do Pedido</h1>
+          <div className={styles.details}>
+            <h2>Identificação</h2>
+            <p><strong>Nome:</strong> {form.name || 'Não disponível'}</p>
+            <p><strong>Telefone:</strong> {form.phone || 'Não disponível'}</p>
+            <p><strong>Forma de Entrega:</strong> {deliveryOption === 'delivery' ? 'Delivery' : 'Retirar na loja'}</p>
+            {deliveryOption === 'delivery' && (
+              <div>
+                <p><strong>Endereço:</strong></p>
+                <p>{`${form.address.logradouro || ''}, ${form.address.numero || ''} - ${form.address.bairro || ''}, ${form.address.localidade} - ${form.address.uf}${form.address.complemento ? ` (${form.address.complemento})` : ''}`}</p>
+              </div>
             )}
-          </ul>
-
-          {observation && (
-            <div>
-              <h2>Observação</h2>
-              <p>{observation}</p>
+            <p><strong>Forma de Pagamento:</strong> {paymentMethod || 'Não disponível'}</p>
+            <h2>Itens do Pedido</h2>
+            <ul>
+              {cart && cart.length > 0 ? (
+                cart.map(item => (
+                  <li key={item.id}>
+                    {item.name || 'Produto desconhecido'} - Quantidade: {item.quantity}
+                  </li>
+                ))
+              ) : (
+                <p>Nenhum item encontrado no carrinho.</p>
+              )}
+            </ul>
+            {observation && (
+              <div>
+                <h2>Observação</h2>
+                <p>{observation}</p>
+              </div>
+            )}
+            <div className={styles.wrapBtn}>
+              <Botao onClick={() => navigate('/pagamento')} label="Voltar" />
+              <Botao onClick={handleConfirm} label="Finalizar Pedido" />
             </div>
-          )}
-
-          <div className={styles.wrapBtn}>
-            <Botao onClick={handleConfirm} label="Finalizar Pedido" />
           </div>
         </div>
       </div>

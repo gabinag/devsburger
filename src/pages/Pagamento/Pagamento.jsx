@@ -22,29 +22,32 @@ export const Pagamento = () => {
   return (
     <>
       <Header />
-      <div className={styles.pagamento}>
-        <h1>Escolha a forma de pagamento</h1>
-        <form onSubmit={handleSubmit}>
-          <div className={styles.wrapForm}>
-            <label htmlFor="paymentMethod">Forma de Pagamento:</label>
-            <select
-              id="paymentMethod"
-              name="paymentMethod"
-              value={paymentMethod}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled hidden>Selecionar</option>
-              <option value="Cartão">Cartão de Crédito</option>
-              <option value="Dinheiro">Dinheiro</option>
-              <option value="Pix">Pix</option>
-              <option value="Voucher">Voucher/Vale Alimentação ou Refeição</option>
-            </select>
-          </div>
-          <div className={styles.wrapBtn}>
-            <Botao type="submit" label="Confirmar pagamento" />
-          </div>
-        </form>
+      <div className="bgPassosPedido">
+        <div className="container">
+          <h1 className="containerTitle">Escolha a forma de pagamento</h1>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.wrapForm}>
+              <label htmlFor="paymentMethod">Forma de Pagamento:</label>
+              <select
+                id="paymentMethod"
+                name="paymentMethod"
+                value={paymentMethod}
+                onChange={handleChange}
+                required
+              >
+                <option value="" disabled hidden>Selecionar</option>
+                <option value="Cartão">Cartão de Crédito</option>
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="Pix">Pix</option>
+                <option value="Voucher">Voucher/Vale Alimentação ou Refeição</option>
+              </select>
+            </div>
+            <div className={styles.wrapBtn}>
+              <Botao onClick={() => navigate('/dados')} label="Voltar" />
+              <Botao type="submit" label="Prosseguir" />
+            </div>
+          </form>
+        </div>
       </div>
       <Footer />
     </>

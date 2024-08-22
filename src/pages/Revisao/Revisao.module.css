@@ -1,5 +1,13 @@
-.revisao {
-  min-height: 80rem;
-  max-width: 95rem;
-  margin: auto;
+.details {
+  color: #fff;
+  font-size: 1.4rem;
+  min-height: 60vh;
+  padding: 0 1rem;
+}
+
+.wrapBtn {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
 }

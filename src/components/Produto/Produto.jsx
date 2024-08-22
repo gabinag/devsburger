@@ -6,7 +6,7 @@ export const Produto = ({ products, addToCart, getQuantity }) => {
     <div className={styles.wrapCards}>
       {products.map((product) => (
         <div className={styles.card} key={product.id}>
-          <img src={product.image} alt="Imagem do produto" />
+          <img src={product.image} className={styles.imgProd} alt="Imagem do produto" />
           <h3>{product.name}</h3>
           <p className={styles.desc}>{product.description}</p>
           <div className={styles.wrapFlex}>

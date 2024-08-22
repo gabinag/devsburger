@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import InputMask from 'react-input-mask'; 
 import { PedidoContext } from '../../context/PedidoContext';
 import styles from './Dados.module.css';
 import apiCep from '../../services/apiCep';
@@ -46,6 +47,12 @@ export const Dados = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (form.address.localidade.toLowerCase() !== 'santos') {
+      alert('A entrega só é permitida na cidade de Santos.');
+      return; 
+    }
+
     localStorage.setItem('form', JSON.stringify(form));
     localStorage.setItem('deliveryOption', deliveryOption);
     setDeliveryMethod(deliveryOption);
@@ -57,7 +64,7 @@ export const Dados = () => {
   };
 
   const consultaCep = async () => {
-    if (cep.length === 8) {
+    if (cep.length === 9) {
       try {
         const response = await apiCep.get(`/${cep}/json/`);
         if (response.data.erro) {
@@ -101,8 +108,8 @@ export const Dados = () => {
                   required
                 />
                 <label htmlFor="phone">Telefone</label>
-                <input
-                  type="tel"
+                <InputMask
+                  mask="(99) 99999-9999"
                   name="phone"
                   value={form.phone}
                   onChange={handleChange}
@@ -142,10 +149,13 @@ export const Dados = () => {
                     <div>
                       <label htmlFor="cep">CEP</label>
                       <div className={styles.wrapCep}>
-                        <input
-                          type="text"
+                        <InputMask
+                          mask="99999-999"
                           name="cep"
-                          onChange={(e) => setCep(e.target.value)}
+                          onChange={(e) => {
+                            setCep(e.target.value);
+                            handleChange(e); 
+                          }}
                           value={cep}
                         />
                         <button type="button" className={styles.btnCep} onClick={consultaCep}>

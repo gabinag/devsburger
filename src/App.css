@@ -23,6 +23,12 @@ h1, h2, h3 {
   font-family: "Anton", sans-serif;
 }
 
+.loading {
+  color: #fff;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
 .bgPassosPedido {
   background-color: var(--marrom-claro);
 }

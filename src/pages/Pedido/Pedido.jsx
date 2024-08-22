@@ -5,6 +5,7 @@ import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 import { PedidoContext } from '../../context/PedidoContext';
 import { CartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
 
 export const Pedido = () => {
     const [order, setOrder] = useState(null);
@@ -97,55 +98,58 @@ export const Pedido = () => {
     return (
         <>
             <Header />
-            <div className={styles.pedido}>
-                {loading ? (
-                    <p>Carregando...</p>
-                ) : (
-                    <>
-                        {order ? (
-                            <>
-                                <p className={styles.notific}>{message}</p>
-                                <div className={styles.orderDetails}>
-                                    {deliveryMethod === 'delivery' && (
-                                        <p><strong>Endereço de entrega:</strong> {order.address}</p>
-                                    )}
-                                    {cart && cart.length > 0 && (
-                                        <>
-                                            <h2>Itens do Pedido</h2>
-                                            <ul>
-                                                {cart.map(item => (
-                                                    <li key={item.id}>
-                                                        {item.name || 'Produto desconhecido'} - Quantidade: {item.quantity}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </>
-                                    )}
-                                </div>
-                                <div className={styles.wrapInfos}>
-                                    <div>
-                                        <p>Volte nesta tela para acompanhar seu pedido</p>
+            <div className="bgPassosPedido">
+                <div className={styles.pedido}>
+                    <h1 className="containerTitle">Status do Pedido</h1>
+                    {loading ? (
+                        <p className="loading">Carregando...</p>
+                    ) : (
+                        <>
+                            {order ? (
+                                <>
+                                    <p className={styles.notific}>{message}</p>
+                                    <div className={styles.orderDetails}>
+                                        {deliveryMethod === 'delivery' && (
+                                            <p><strong>Endereço de entrega:</strong> {order.address}</p>
+                                        )}
+                                        {cart && cart.length > 0 && (
+                                            <>
+                                                <h2>Itens do Pedido</h2>
+                                                <ul>
+                                                    {cart.map(item => (
+                                                        <li key={item.id}>
+                                                            {item.name || 'Produto desconhecido'} - Quantidade: {item.quantity}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </>
+                                        )}
                                     </div>
-                                    <div>
-                                        <p>Tempo médio de espera é de 40 min</p>
+                                    <div className={styles.wrapInfos}>
+                                        <div>
+                                            <p>Volte nesta tela para acompanhar seu pedido</p>
+                                        </div>
+                                        <div>
+                                            <p>Tempo médio de espera é de 40 min</p>
+                                        </div>
+                                        <div>
+                                            <p>Entre em contato conosco pelo nosso WhatsApp</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p>Entre em contato conosco pelo nosso WhatsApp</p>
-                                    </div>
-                                </div>
-                                <button
-                                    className={styles.cancelButton}
-                                    onClick={() => handleCancelOrder(order.id)} 
-                                    disabled={isButtonDisabled}
-                                >
-                                    Cancelar Pedido
-                                </button>
-                            </>
-                        ) : (
-                            <p>Não há pedidos feitos no momento, selecione os itens que deseja em Produtos.</p>
-                        )}
-                    </>
-                )}
+                                    <button
+                                        className={styles.cancelButton}
+                                        onClick={() => handleCancelOrder(order.id)}
+                                        disabled={isButtonDisabled}
+                                    >
+                                        Cancelar Pedido
+                                    </button>
+                                </>
+                            ) : (
+                                <p className={styles.vazio}>Não há pedidos feitos no momento, selecione os itens que deseja em <Link to="/" className={styles.vazioLink}>Produtos</Link>.</p>
+                            )}
+                        </>
+                    )}
+                </div>
             </div>
             <Footer />
         </>
