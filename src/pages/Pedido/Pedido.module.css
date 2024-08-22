@@ -5,6 +5,14 @@
     padding: 1rem 0 2rem;
 }
 
+.content {
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .vazio {
     padding: 1rem;
     color: #fff;
@@ -16,21 +24,46 @@
 }
 
 .notific {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
+    color: var(--laranja);
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    font-family: "Anton";
+    text-align: center;
 }
 
 .wrapInfos {
     display: flex;
     gap: 2rem;
-    margin-top: 5rem;
-    align-items: center;
+    align-items: flex-end;
     flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .wrapInfos div {
-    width: min(20rem, 100%);
-    background-color: lightgray;
+    max-width: 20rem;
+    background-color: var(--laranja);
     padding: 3rem;
     border-radius: 1rem;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.cancelButton {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2rem 0;
+}
+
+@media screen and (min-width: 600px) {
+    .content {
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 968px) {
+    .notific {
+        padding: 4rem 10rem;
+    }
 }

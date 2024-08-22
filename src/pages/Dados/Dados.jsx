@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InputMask from 'react-input-mask'; 
 import { PedidoContext } from '../../context/PedidoContext';
@@ -26,31 +26,50 @@ export const Dados = () => {
     }
   });
 
+  useEffect(() => {
+    const storedForm = localStorage.getItem('form');
+    if (storedForm) {
+      setForm(JSON.parse(storedForm)); 
+    }
+  
+    const storedDeliveryOption = localStorage.getItem('deliveryOption');
+    if (storedDeliveryOption) {
+      setDeliveryOption(storedDeliveryOption); 
+    }
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-
+  
     if (name in form.address) {
-      setForm((prevForm) => ({
-        ...prevForm,
+      const updatedForm = {
+        ...form,
         address: {
-          ...prevForm.address,
+          ...form.address,
           [name]: value
         }
-      }));
+      };
+      setForm(updatedForm);
+      localStorage.setItem('form', JSON.stringify(updatedForm)); 
     } else {
-      setForm((prevForm) => ({
-        ...prevForm,
+      const updatedForm = {
+        ...form,
         [name]: value
-      }));
+      };
+      setForm(updatedForm);
+      localStorage.setItem('form', JSON.stringify(updatedForm)); 
     }
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (form.address.localidade.toLowerCase() !== 'santos') {
-      alert('A entrega só é permitida na cidade de Santos.');
-      return; 
+    if (deliveryOption === 'delivery') {
+      if (form.address.localidade.toLowerCase() !== 'santos') {
+        alert('No momento só realizamos entregas na cidade de Santos.');
+        return; 
+      }
     }
 
     localStorage.setItem('form', JSON.stringify(form));

@@ -6,6 +6,7 @@ import { Footer } from '../../components/Footer/Footer';
 import { PedidoContext } from '../../context/PedidoContext';
 import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
+import { Botao } from '../../components/Botao/Botao';
 
 export const Pedido = () => {
     const [order, setOrder] = useState(null);
@@ -106,44 +107,30 @@ export const Pedido = () => {
                     ) : (
                         <>
                             {order ? (
-                                <>
-                                    <p className={styles.notific}>{message}</p>
-                                    <div className={styles.orderDetails}>
-                                        {deliveryMethod === 'delivery' && (
-                                            <p><strong>Endereço de entrega:</strong> {order.address}</p>
-                                        )}
-                                        {cart && cart.length > 0 && (
-                                            <>
-                                                <h2>Itens do Pedido</h2>
-                                                <ul>
-                                                    {cart.map(item => (
-                                                        <li key={item.id}>
-                                                            {item.name || 'Produto desconhecido'} - Quantidade: {item.quantity}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </>
-                                        )}
+                                <div className={styles.content}>
+                                    <div>
+                                        <p className={styles.notific}>{message}</p>
+                                        <div className={styles.cancelButton}>
+                                            <Botao
+                                                onClick={() => handleCancelOrder(order.id)}
+                                                disabled={isButtonDisabled}
+                                                label="Cancelar Pedido"
+                                            >
+                                            </Botao>
+                                        </div>
                                     </div>
                                     <div className={styles.wrapInfos}>
                                         <div>
                                             <p>Volte nesta tela para acompanhar seu pedido</p>
                                         </div>
                                         <div>
-                                            <p>Tempo médio de espera é de 40 min</p>
+                                            <p>O tempo médio de espera é de 40 minutos</p>
                                         </div>
                                         <div>
                                             <p>Entre em contato conosco pelo nosso WhatsApp</p>
                                         </div>
                                     </div>
-                                    <button
-                                        className={styles.cancelButton}
-                                        onClick={() => handleCancelOrder(order.id)}
-                                        disabled={isButtonDisabled}
-                                    >
-                                        Cancelar Pedido
-                                    </button>
-                                </>
+                                </div>
                             ) : (
                                 <p className={styles.vazio}>Não há pedidos feitos no momento, selecione os itens que deseja em <Link to="/" className={styles.vazioLink}>Produtos</Link>.</p>
                             )}

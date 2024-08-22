@@ -57,6 +57,8 @@ export const Revisao = () => {
       const orderId = response.data.id;
       localStorage.setItem('orderId', orderId);
       localStorage.removeItem('observation');
+      localStorage.removeItem('form');
+      localStorage.removeItem('deliveryOption');
       clearCart();
       navigate('/pedido');
     } catch (error) {
