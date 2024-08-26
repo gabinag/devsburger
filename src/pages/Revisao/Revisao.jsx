@@ -59,6 +59,7 @@ export const Revisao = () => {
       localStorage.removeItem('observation');
       localStorage.removeItem('form');
       localStorage.removeItem('deliveryOption');
+      localStorage.removeItem('paymentMethod');
       clearCart();
       navigate('/pedido');
     } catch (error) {
