@@ -118,7 +118,7 @@ export const Dados = () => {
           <form onSubmit={handleSubmit}>
             <div className={styles.wrapForm}>
               <section className={styles.sectionForm}>
-                <label htmlFor="name">Nome</label>
+                <label htmlFor="name">Nome completo*</label>
                 <input
                   type="text"
                   name="name"
@@ -126,7 +126,7 @@ export const Dados = () => {
                   onChange={handleChange}
                   required
                 />
-                <label htmlFor="phone">Telefone</label>
+                <label htmlFor="phone">Telefone*</label>
                 <InputMask
                   mask="(99) 99999-9999"
                   name="phone"
@@ -135,7 +135,7 @@ export const Dados = () => {
                   required
                 />
                 <div>
-                  <p>Selecione a forma de entrega:</p>
+                  <p>Selecione a forma de entrega*</p>
                   <div className={styles.wrapRadio}>
                     <div>
                       <input
@@ -166,7 +166,7 @@ export const Dados = () => {
                 {deliveryOption === 'delivery' && (
                   <div>
                     <div>
-                      <label htmlFor="cep">CEP</label>
+                      <label htmlFor="cep">CEP*</label>
                       <div className={styles.wrapCep}>
                         <InputMask
                           mask="99999-999"
@@ -184,7 +184,7 @@ export const Dados = () => {
                     </div>
                     <div className={styles.wrapInputs}>
                       <div>
-                        <label htmlFor="logradouro">Logradouro</label>
+                        <label htmlFor="logradouro">Logradouro*</label>
                         <input
                           type="text"
                           name="logradouro"
@@ -194,7 +194,7 @@ export const Dados = () => {
                         />
                       </div>
                       <div>
-                        <label htmlFor="numero">Nº</label>
+                        <label htmlFor="numero">Número*</label>
                         <input
                           type="number"
                           name="numero"
@@ -206,7 +206,7 @@ export const Dados = () => {
                     </div>
                     <div className={styles.wrapInputs}>
                       <div>
-                        <label htmlFor="bairro">Bairro</label>
+                        <label htmlFor="bairro">Bairro*</label>
                         <input
                           type="text"
                           name="bairro"
@@ -216,7 +216,7 @@ export const Dados = () => {
                         />
                       </div>
                       <div>
-                        <label htmlFor="localidade">Cidade</label>
+                        <label htmlFor="localidade">Cidade*</label>
                         <input
                           type="text"
                           name="localidade"
@@ -228,7 +228,7 @@ export const Dados = () => {
                     </div>
                     <div className={styles.wrapInputs}>
                       <div>
-                        <label htmlFor="uf">UF</label>
+                        <label htmlFor="uf">Estado*</label>
                         <input
                           type="text"
                           name="uf"

@@ -1,13 +1,37 @@
-.details {
+.revisao {
   color: #fff;
   font-size: 1.4rem;
-  min-height: 60vh;
+  min-height: 80vh;
   padding: 0 1rem;
+  .cardRevisao {
+    background-color: var(--marrom-claro);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: .3rem;
+    }
+    h3 {
+      font-size: 1.4rem;
+    }
+    p {
+      margin-bottom: .2rem;
+    }
+    .btnEdit {
+      align-self: flex-end;
+    }
+  }
+  .wrapBtn {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 3rem;
+  }
 }
 
-.wrapBtn {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-  margin-top: 2rem;
-}
+
+
