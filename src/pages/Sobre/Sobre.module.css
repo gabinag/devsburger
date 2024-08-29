@@ -110,7 +110,7 @@
             }
         }
     }
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 620px) {
         .wrapLocalizacao {
             padding: 3rem 1rem;
             h2 {
@@ -139,6 +139,83 @@
                     p {
                         margin-bottom: 1rem;
                         max-width: 15rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.horarioContato {
+    background-color: var(--marrom-claro);
+    .wrapHorarioContato {
+        width: min(95rem, 100%);
+        margin: auto;
+        padding: 2rem 1rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        color: #fff;
+        text-align: center;
+        table {
+            font-size: 1.4rem;
+            margin: .5rem 0 1.5rem;
+            td {
+                padding-right: .5rem;
+                text-align: start;
+            }
+        }
+        .wrapContato {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+            div {
+                display: flex;
+                background-color: var(--laranja);
+                padding: 1rem;
+                border-radius: .5rem;
+                font-size: 1.3rem;
+                justify-content: center;
+                align-items: center;
+                gap: .5rem;
+                img {
+                    max-width: 1.5rem;
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 620px) {
+        .wrapHorarioContato {
+            text-align: start;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 3rem 1rem;
+            gap: 18rem;
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            table {
+                font-size: 2rem;
+                margin-bottom: 0;
+                td {
+                    padding-right: 4rem;
+                    padding-bottom: .5rem;
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 824px) {
+        .wrapHorarioContato {
+            .wrapContato {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                div {
+                    font-size: 1.6rem;
+                    padding: 1.5rem;
+                    flex-direction: column;           
+                    img {
+                        max-width: 2.5rem;
                     }
                 }
             }

@@ -57,13 +57,65 @@ export const Sobre = () => {
           </div>
         </div>
       </section>
-      <section>
-        <div>
+      <section className={styles.horarioContato}>
+        <div className={styles.wrapHorarioContato}>
           <div>
             <h2>Horário de funcionamento</h2>
+            <table>
+              <tr>
+                <td>Segunda-feira</td>
+                <td>Fechado</td>
+              </tr>
+              <tr>
+                <td>Terça-feira</td>
+                <td>18:00 - 23:00</td>
+              </tr>
+              <tr>
+                <td>Quarta-feira</td>
+                <td>18:00 - 23:00</td>
+              </tr>
+              <tr>
+                <td>Quinta-feira</td>
+                <td>18:00 - 23:00</td>
+              </tr>
+              <tr>
+                <td>Sexta-feira</td>
+                <td>18:00 - 02:00</td>
+              </tr>
+              <tr>
+                <td>Sábado</td>
+                <td>18:00 - 02:00</td>
+              </tr>
+              <tr>
+                <td>Domingo</td>
+                <td>18:00 - 23:00</td>
+              </tr>
+              <tr>
+                <td>Feriados</td>
+                <td>18:00 - 23:00</td>
+              </tr>
+            </table>
           </div>
           <div>
             <h2>Entre em contato</h2>
+            <div className={styles.wrapContato}>
+              <div>
+                <img src={iconWhats} alt="Ícone do whatsapp" />
+                <p>(13) 9911-1111</p>
+              </div>
+              <div>
+                <img src={iconInsta} alt="Ícone do instagram" />
+                <p>@devs_burger</p>
+              </div>
+              <div>
+                <img src={iconTel} alt="Ícone de telefone" />
+                <p>(13) 3301-0101</p>
+              </div>
+              <div>
+                <img src={iconMail} alt="Ícone de e-mail" />
+                <p>devsburger@gmail.com</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
