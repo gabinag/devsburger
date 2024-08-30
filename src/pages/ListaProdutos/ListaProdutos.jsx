@@ -1,5 +1,5 @@
 import apiDevsBurger from '../../services/apiDevsBurger';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import styles from './ListaProdutos.module.css';
@@ -21,6 +21,7 @@ export const ListaProdutos = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('HAMBURGUERES');
   const { addToCart, removeFromCart, cart } = useContext(CartContext);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     loadProducts();
@@ -51,7 +52,7 @@ export const ListaProdutos = () => {
   return (
     <>
       <Header/>
-      <Banner/>
+      <Banner sectionRef={sectionRef}/>
       <div className={styles.listaProdutos}>
         <section className={styles.navProdutos}>
             <ul>
@@ -73,7 +74,7 @@ export const ListaProdutos = () => {
               </li>
             </ul>
         </section>
-        <section className={styles.loadProdutos}>
+        <section className={styles.loadProdutos} ref={sectionRef}>
           {filteredProducts.length === 0 ? (
             <p className={styles.loading}>Carregando produtos...</p>
           ) : (

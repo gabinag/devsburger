@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 12rem;
+    width: 13rem;
 }
 
 .navProdutos ul li.selected {
@@ -119,6 +119,7 @@
         flex-direction: row;
         justify-content: center;
         width: 14rem;
+        font-size: 1.4rem;
     }
 
     .navProdutos img {
@@ -126,8 +127,11 @@
     }
 
     .irCarrinho {
-        bottom: 1rem;
-        right: 1rem;
+        bottom: .5rem;
+        right: .5rem;
+        font-size: 1.4rem;
+        padding: .5rem 1rem;
+        background-color: var(--marrom-claro);
     }
     .infoWrapper {
         flex-direction: column;

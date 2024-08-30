@@ -8,20 +8,20 @@
 
 @media (min-width: 465px) {
     .wrapCards {
-        max-width: 46.5rem;
+        max-width: 42rem;
         justify-content: flex-start;
     }
 }
 
 @media (min-width: 706px) {
     .wrapCards {
-        max-width: 70.6rem;
+        max-width: 64rem;
     }
 }
 
 @media (min-width: 948px) {
     .wrapCards {
-        max-width: 95rem;
+        max-width: 86rem;
     }
 }
 
