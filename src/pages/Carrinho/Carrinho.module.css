@@ -41,8 +41,8 @@
 }
 
 .card img {
-    width: min(12rem, 100%);
-    height: 9rem;
+    height: 8rem;
+    min-width: 9rem;
 }
 
 .wrapFlex {
@@ -68,10 +68,15 @@
     font-weight: 600;
 }
 
+.wrapTitle, .wrapDesc {
+    padding-left: 1rem;
+}
+
 .desc {
     font-size: 1.3rem;
     color: var(--marrom);
     width: min(35rem, 100%);
+    margin-bottom: .5rem;
 }
 
 .wrapQtd {
@@ -127,11 +132,25 @@ textarea {
         grid-template-columns: 2fr 1fr;
         gap: 5rem;
     }
+    .card img {
+        width: min(12rem, 100%);
+        height: 9rem;
+    }
     .wrapDesc {
         display: flex;
         justify-content: space-between;
+        gap: 1rem;
+        .desc {
+            margin-bottom: 0;
+        }
     }
     textarea {
         height: 15rem;
+    }
+}
+
+@media screen and (min-width: 940px) {
+    .wrapTitle, .wrapDesc {
+        padding-left: 0rem;
     }
 }
