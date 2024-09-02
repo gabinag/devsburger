@@ -31,6 +31,8 @@ export const Revisao = () => {
     }
   }, [navigate]);
 
+  const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+
   const handleConfirm = async () => {
     const formattedAddress = deliveryOption === 'delivery'
       ? `${form.address.logradouro}, ${form.address.numero} - ${form.address.bairro}, ${form.address.localidade} - ${form.address.uf}${form.address.complemento ? ` (${form.address.complemento})` : ''}`
@@ -118,6 +120,7 @@ export const Revisao = () => {
               <div>
                 <h2>Forma de Pagamento</h2>
                 <p>{paymentMethod || 'Não disponível'}</p>
+                <p><strong>Total a pagar:</strong> R${totalPrice.toFixed(2)}</p> 
               </div>
               <div className={styles.btnEdit}>
                 <Botao label="Editar forma de pagamento" backgroundColor="var(--marrom)" fontSize="1.5rem" onClick={() => navigate('/pagamento')}/>

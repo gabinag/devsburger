@@ -96,6 +96,16 @@ export const Pedido = () => {
         }
     }
 
+    const copyToClipboard = (text) => {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                alert('ID copiado para a área de transferência!');
+            })
+            .catch((error) => {
+                console.error('Falha ao copiar:', error);
+            });
+    };    
+
     return (
         <>
             <Header />
@@ -110,6 +120,19 @@ export const Pedido = () => {
                                 <div className={styles.content}>
                                     <div>
                                         <p className={styles.notific}>{message}</p>
+                                        <div className={styles.orderId}>
+                                            <h2>ID do Pedido</h2>
+                                            <div>
+                                                <p>{order.id}</p>
+                                                <button
+                                                    onClick={() => copyToClipboard(order.id)}
+                                                    className={styles.copyButton}
+                                                >
+                                                    Copiar
+                                                </button>
+                                            </div>
+                                            <p className={styles.descId}>Em caso de necessidade de identificação do pedido, utilize o ID.</p>
+                                        </div>
                                         <div className={styles.cancelButton}>
                                             <Botao
                                                 onClick={() => handleCancelOrder(order.id)}

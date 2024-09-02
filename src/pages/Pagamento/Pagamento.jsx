@@ -80,13 +80,16 @@ export const Pagamento = () => {
                   <div
                     className={`${styles.messageBox} ${selectedPayment === 'Dinheiro' ? styles.messageBoxVisible : ''}`}
                   >
-                    <label>
+                    {/* <label>
                       <span>Troco para: </span>
                       <input type="number" className={styles.troco}/>
                     </label>
                     <label>
                       <input type="checkbox" />
                       <span>Não preciso de troco.</span>
+                    </label> */}
+                    <label>
+                      <span>Realizar pagamento com atendente/entregador.</span>
                     </label>
                   </div>
                 </div>

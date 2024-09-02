@@ -24,41 +24,90 @@
 }
 
 .notific {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     color: var(--laranja);
     background-color: #fff;
     padding: 2rem;
     border-radius: 1.5rem;
     font-family: "Anton";
     text-align: center;
+    max-width: 24rem;
+}
+
+.orderId {
+    margin: 1rem 0 2rem;
+    div {
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: .5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+        button {
+            font-size: 1.2rem;
+            padding: .3rem 1rem;
+            border: none;
+            border-radius: .5rem;
+            color: #fff;
+            background-color: var(--laranja);
+        }
+    }
+    .descId {
+        font-size: 1.2rem;
+        max-width: 25rem;
+    }
 }
 
 .wrapInfos {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     align-items: flex-end;
     flex-wrap: wrap;
     flex-direction: column;
 }
 
 .wrapInfos div {
-    max-width: 20rem;
+    max-width: 24rem;
     background-color: var(--laranja);
-    padding: 3rem;
+    padding: 1rem;
     border-radius: 1rem;
     font-size: 1.6rem;
     text-align: center;
+    margin-left: 1rem;
+    font-size: 1.4rem;
 }
 
 .cancelButton {
     display: flex;
     justify-content: flex-end;
-    margin: 2rem 0;
+    margin: 1rem 0;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 684px) {
     .content {
         justify-content: space-between;
+    }
+    .notific {
+        font-size: 2.5rem;
+        padding: 2rem;
+        max-width: 100%;
+    }
+    .wrapInfos {
+        gap: 2rem;
+    }
+    .wrapInfos div {
+        padding: 2rem;
+        font-size: 1.6rem;
+    }
+    .cancelButton {
+        margin: 2rem 0;
+    }
+    .orderId {
+        margin: 1.5rem .5rem 2rem;
+        .descId {
+            font-size: 1.4rem;
+            max-width: none;
+        }
     }
 }
 
