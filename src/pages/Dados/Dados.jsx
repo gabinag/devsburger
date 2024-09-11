@@ -253,7 +253,7 @@ export const Dados = () => {
             </div>
             <div className={styles.wrapBtn}>
               <Botao onClick={() => navigate('/carrinho')} label="Voltar" />
-              <Botao type="submit" label="Prosseguir" />
+              <Botao type="submit" label="Prosseguir" backgroundColor="var(--laranja)"/>
             </div>
           </form>
         </div>

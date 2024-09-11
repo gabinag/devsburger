@@ -141,7 +141,7 @@ export const Pagamento = () => {
                       {cart && cart.length > 0 ? (
                         cart.map(item => (
                           <li key={item.id}>
-                            {item.name || 'Produto desconhecido'} - Quantidade: {item.quantity}
+                            {item.quantity}x {item.name || 'Produto desconhecido'} - R${item.price}
                           </li>
                         ))
                       ) : (
@@ -154,7 +154,7 @@ export const Pagamento = () => {
             </div>
             <div className={styles.wrapBtn}>
               <Botao onClick={() => navigate('/dados')} label="Voltar" />
-              <Botao type="submit" label="Prosseguir" />
+              <Botao type="submit" label="Prosseguir" backgroundColor="var(--laranja)"/>
             </div>
           </form>
         </div>

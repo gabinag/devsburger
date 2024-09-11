@@ -48,11 +48,14 @@ export const Revisao = () => {
         quantity: item.quantity,
       })),
       observation: observation || null,
+      totalPrice: parseFloat(totalPrice.toFixed(2)),
     };
 
     if (observation.trim() !== '') {
       orderData.observation = observation;
     }
+
+    console.log('Dados do pedido:', orderData);
 
     try {
       const response = await apiDevsBurger.post('/order', orderData);
@@ -65,7 +68,7 @@ export const Revisao = () => {
       clearCart();
       navigate('/pedido');
     } catch (error) {
-      console.error('Erro ao realizar pedido:', error);
+      console.error('Erro ao realizar pedido:', error.response?.data || error.message)
       alert('Erro ao realizar pedido. Por favor, tente novamente.');
     }
   };

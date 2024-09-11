@@ -94,17 +94,7 @@ export const Pedido = () => {
             console.error('Erro ao cancelar pedido:', error);
             setIsButtonDisabled(false);
         }
-    }
-
-    const copyToClipboard = (text) => {
-        navigator.clipboard.writeText(text)
-            .then(() => {
-                alert('ID copiado para a área de transferência!');
-            })
-            .catch((error) => {
-                console.error('Falha ao copiar:', error);
-            });
-    };    
+    }  
 
     return (
         <>
@@ -120,18 +110,25 @@ export const Pedido = () => {
                                 <div className={styles.content}>
                                     <div>
                                         <p className={styles.notific}>{message}</p>
-                                        <div className={styles.orderId}>
-                                            <h2>ID do Pedido</h2>
-                                            <div>
-                                                <p>{order.id}</p>
-                                                <button
-                                                    onClick={() => copyToClipboard(order.id)}
-                                                    className={styles.copyButton}
-                                                >
-                                                    Copiar
-                                                </button>
+                                        <div className={styles.details}>
+                                            <h2>Detalhes do Pedido</h2>
+                                            <div className={styles.wrapDetails}>
+                                                <div>
+                                                    <p>Entrega: {order.address}</p>
+                                                    <p>Forma de Pagamento: {order.paymentMethod}</p>
+                                                    <p>Valor Total: R${order.totalPrice.toFixed(2)}</p>
+                                                </div>
+                                                <div>
+                                                    <h3>Itens do Pedido:</h3>
+                                                    <ul>
+                                                        {order.orderItems.map((item) => (
+                                                            <li key={item.product.name}>
+                                                                {item.product.name} - Quantidade: {item.quantity}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
                                             </div>
-                                            <p className={styles.descId}>Em caso de necessidade de identificação do pedido, utilize o ID.</p>
                                         </div>
                                         <div className={styles.cancelButton}>
                                             <Botao

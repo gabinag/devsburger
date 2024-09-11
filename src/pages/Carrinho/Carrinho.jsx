@@ -58,7 +58,7 @@ export const Carrinho = () => {
                 <p className={`${styles.wrapFlexEnd} ${styles.total}`}>Valor total: R${calculaPrecoTotal().toFixed(2)}</p>
                 <div className={styles.wrapFlexEnd}>
                   <Botao onClick={() => navigate('/')} label="Voltar"/>
-                  <Botao onClick={() => navigate('/dados')} label="Prosseguir"/>
+                  <Botao onClick={() => navigate('/dados')} label="Prosseguir" backgroundColor="var(--laranja)"/>
                 </div>
               </div>
             </section>
