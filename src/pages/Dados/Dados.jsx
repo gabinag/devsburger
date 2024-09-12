@@ -9,34 +9,14 @@ import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 
 export const Dados = () => {
-  const { setDeliveryMethod } = useContext(PedidoContext);
+  const { deliveryMethod, setDeliveryMethod, form, setForm } = useContext(PedidoContext);
   const navigate = useNavigate();
-  const [deliveryOption, setDeliveryOption] = useState('delivery');
+  const [deliveryOption, setDeliveryOption] = useState(deliveryMethod || 'delivery');
   const [cep, setCep] = useState('');
-  const [form, setForm] = useState({
-    name: '',
-    phone: '',
-    address: {
-      logradouro: '',
-      numero: '',
-      bairro: '',
-      localidade: '',
-      uf: '',
-      complemento: ''
-    }
-  });
 
   useEffect(() => {
-    const storedForm = localStorage.getItem('form');
-    if (storedForm) {
-      setForm(JSON.parse(storedForm)); 
-    }
-  
-    const storedDeliveryOption = localStorage.getItem('deliveryOption');
-    if (storedDeliveryOption) {
-      setDeliveryOption(storedDeliveryOption); 
-    }
-  }, []);
+    setDeliveryOption(deliveryMethod);  
+  }, [deliveryMethod]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,19 +29,16 @@ export const Dados = () => {
           [name]: value
         }
       };
-      setForm(updatedForm);
-      localStorage.setItem('form', JSON.stringify(updatedForm)); 
+      setForm(updatedForm); 
     } else {
       const updatedForm = {
         ...form,
         [name]: value
       };
-      setForm(updatedForm);
-      localStorage.setItem('form', JSON.stringify(updatedForm)); 
+      setForm(updatedForm); 
     }
   };
   
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -72,14 +49,13 @@ export const Dados = () => {
       }
     }
 
-    localStorage.setItem('form', JSON.stringify(form));
-    localStorage.setItem('deliveryOption', deliveryOption);
-    setDeliveryMethod(deliveryOption);
+    setDeliveryMethod(deliveryOption); 
     navigate('/pagamento');
   };
 
   const handleOptionChange = (e) => {
     setDeliveryOption(e.target.value);
+    setDeliveryMethod(e.target.value); 
   };
 
   const consultaCep = async () => {

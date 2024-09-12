@@ -5,11 +5,13 @@ import styles from './Pagamento.module.css';
 import { Botao } from '../../components/Botao/Botao';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
+import { PedidoContext } from '../../context/PedidoContext';
 
 export const Pagamento = () => {
   const navigate = useNavigate();
   const [selectedPayment, setSelectedPayment] = useState('');
   const { cart } = useContext(CartContext);
+  const { deliveryMethod, deliveryFee } = useContext(PedidoContext); 
 
   useEffect(() => {
     const savedPaymentMethod = localStorage.getItem('paymentMethod');
@@ -19,7 +21,9 @@ export const Pagamento = () => {
   }, []);
 
   const calculaPrecoTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    let total = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    total += deliveryFee; 
+    return total;
   };
 
   const handleRadioChange = (e) => {
@@ -149,6 +153,9 @@ export const Pagamento = () => {
                       )}
                     </ul>
                 </div>
+                {deliveryMethod === 'delivery' && (
+                  <p className={styles.total}>Taxa de entrega: R$5.00</p>
+                )}
                 <p className={styles.total}>Valor total: R${calculaPrecoTotal().toFixed(2)}</p>
               </div>
             </div>
