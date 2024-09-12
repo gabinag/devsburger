@@ -11,7 +11,7 @@ footer {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
+        gap: 4.5rem;
         margin-bottom: 2rem;
         img {
             max-width: 2.5rem;
@@ -19,16 +19,12 @@ footer {
     }
     .copyright {
         color: var(--laranja);
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
     @media screen and (min-width: 600px) {
         padding: 4rem 0 3rem;
         .wrapIcons {
-            gap: 4.5rem;
             margin-bottom: 3rem;
-        }
-        .copyright {
-            font-size: 1.4rem;
         }
     }
 }

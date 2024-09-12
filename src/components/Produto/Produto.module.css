@@ -6,27 +6,27 @@
     justify-content: center;
 }
 
-@media (min-width: 465px) {
+@media (min-width: 530px) {
     .wrapCards {
-        max-width: 42rem;
+        max-width: 46rem;
         justify-content: flex-start;
     }
 }
 
-@media (min-width: 706px) {
+@media (min-width: 718px) {
     .wrapCards {
-        max-width: 64rem;
+        max-width: 70rem;
     }
 }
 
-@media (min-width: 948px) {
+@media (min-width: 960px) {
     .wrapCards {
-        max-width: 86rem;
+        max-width: 94rem;
     }
 }
 
 .card {
-    width: min(20rem, 100%);
+    width: min(22rem, 100%);
     border: 1px solid lightgray;
     border-radius: 1rem;
     padding: 1rem;

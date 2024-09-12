@@ -11,23 +11,29 @@ export const Pagamento = () => {
   const navigate = useNavigate();
   const [selectedPayment, setSelectedPayment] = useState('');
   const { cart } = useContext(CartContext);
-  const { deliveryMethod, deliveryFee } = useContext(PedidoContext); 
+  const { deliveryMethod, deliveryFee, paymentMethod, setPaymentMethod } = useContext(PedidoContext); 
 
   useEffect(() => {
-    const savedPaymentMethod = localStorage.getItem('paymentMethod');
+    const savedPaymentMethod = paymentMethod || localStorage.getItem('paymentMethod');
     if (savedPaymentMethod) {
       setSelectedPayment(savedPaymentMethod);
     }
-  }, []);
+  }, [paymentMethod]);
+
+  const handlePaymentChange = (e) => {
+    const paymentMethod = e.target.value;
+    setSelectedPayment(paymentMethod);
+    localStorage.setItem('paymentMethod', paymentMethod);
+    setPaymentMethod(paymentMethod); 
+  }
 
   const calculaPrecoTotal = () => {
     let total = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-    total += deliveryFee; 
+    if (deliveryMethod == "delivery") {
+      total += deliveryFee; 
+    }
+    
     return total;
-  };
-
-  const handleRadioChange = (e) => {
-    setSelectedPayment(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -56,7 +62,7 @@ export const Pagamento = () => {
                       name="paymentMethod"
                       value="Cartão"
                       checked={selectedPayment === 'Cartão'}
-                      onChange={handleRadioChange}
+                      onChange={handlePaymentChange}
                       required
                     />
                     Cartão de Crédito
@@ -76,7 +82,7 @@ export const Pagamento = () => {
                       name="paymentMethod"
                       value="Dinheiro"
                       checked={selectedPayment === 'Dinheiro'}
-                      onChange={handleRadioChange}
+                      onChange={handlePaymentChange}
                       required
                     />
                     Dinheiro
@@ -84,17 +90,7 @@ export const Pagamento = () => {
                   <div
                     className={`${styles.messageBox} ${selectedPayment === 'Dinheiro' ? styles.messageBoxVisible : ''}`}
                   >
-                    {/* <label>
-                      <span>Troco para: </span>
-                      <input type="number" className={styles.troco}/>
-                    </label>
-                    <label>
-                      <input type="checkbox" />
-                      <span>Não preciso de troco.</span>
-                    </label> */}
-                    <label>
-                      <span>Realizar pagamento com atendente/entregador.</span>
-                    </label>
+                    <p>Realizar pagamento com atendente/entregador.</p>
                   </div>
                 </div>
                 <div className={styles.paymentOption}>
@@ -106,7 +102,7 @@ export const Pagamento = () => {
                       name="paymentMethod"
                       value="Pix"
                       checked={selectedPayment === 'Pix'}
-                      onChange={handleRadioChange}
+                      onChange={handlePaymentChange}
                       required
                     />
                     Pix
@@ -126,7 +122,7 @@ export const Pagamento = () => {
                       name="paymentMethod"
                       value="Voucher"
                       checked={selectedPayment === 'Voucher'}
-                      onChange={handleRadioChange}
+                      onChange={handlePaymentChange}
                       required
                     />
                     Voucher/Vale Alimentação ou Refeição

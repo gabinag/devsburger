@@ -3,7 +3,18 @@ import { createContext, useState, useEffect } from 'react';
 export const PedidoContext = createContext();
 
 export const PedidoProvider = ({ children }) => {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    address: {
+      logradouro: '',
+      numero: '',
+      bairro: '',
+      localidade: '',
+      uf: '',
+      complemento: ''
+    },
+    name: '',
+    phone: ''
+  });
   const [message, setMessage] = useState('');
   const [deliveryMethod, setDeliveryMethod] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('');
@@ -15,17 +26,38 @@ export const PedidoProvider = ({ children }) => {
     const storedDeliveryMethod = localStorage.getItem('deliveryMethod');
     const storedPaymentMethod = localStorage.getItem('paymentMethod');
     const storedObservation = localStorage.getItem('observation');
+    const storedMessage = localStorage.getItem('message');
 
     if (storedForm) setForm(storedForm);
     if (storedDeliveryMethod) setDeliveryMethod(storedDeliveryMethod);
     if (storedPaymentMethod) setPaymentMethod(storedPaymentMethod);
     if (storedObservation) setObservation(storedObservation);
-
-    const storedMessage = localStorage.getItem('message');
-    if (storedMessage) {
-      setMessage(storedMessage);
-    }
+    if (storedMessage) setMessage(storedMessage);
+    
   }, []);
+
+  const clearPedido = () => {
+    setForm({
+      address: {
+        logradouro: '',
+        numero: '',
+        bairro: '',
+        localidade: '',
+        uf: '',
+        complemento: ''
+      },
+      name: '',
+      phone: ''
+    });
+    setDeliveryMethod('');
+    setPaymentMethod('');
+    setObservation('');
+    setMessage('');
+    localStorage.removeItem('observation');
+    localStorage.removeItem('form');
+    localStorage.removeItem('deliveryMethod');
+    localStorage.removeItem('paymentMethod');
+  };
 
   return (
     <PedidoContext.Provider 
@@ -40,7 +72,8 @@ export const PedidoProvider = ({ children }) => {
         setObservation,
         deliveryFee,
         message,
-        setMessage
+        setMessage,
+        clearPedido
     }}
     >
       {children}

@@ -20,7 +20,7 @@ form {
     margin-top: 2rem;
     font-size: 1.6rem;
     color: #fff;
-    min-height: 40vh;
+    min-height: 60vh;
 }
 
 .wrapForm input {
@@ -53,6 +53,7 @@ form {
     border-radius: .5rem;
     background-color: var(--laranja);
     color: #fff;
+    cursor: pointer;
 }
 
 .wrapInputs {
@@ -88,4 +89,17 @@ select {
     justify-content: flex-end;
     gap: 1rem;
     margin-top: 2rem;
+}
+
+@media  screen and (max-width: 600px){
+    label, .labelEntrega {
+        font-size: 2rem;
+    }
+    .wrapForm input {
+        font-size: 2rem;
+        padding: .3rem .8rem;
+    }
+    .btnCep {
+        font-size: 1.8rem;
+    }
 }

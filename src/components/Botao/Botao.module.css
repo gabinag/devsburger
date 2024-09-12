@@ -1,18 +1,11 @@
 .botao {
-    padding: 1rem 1.5rem;
+    padding: 1rem 2rem;
     border: none;
     border-radius: 1rem;
     background-color: var(--marrom-claro);
     color: white;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
     font-family: "Antonio", sans-serif;
     font-weight: 600;
-}
-
-@media screen and (min-width: 768px) {
-    .botao {
-        padding: 1rem 2rem;
-        font-size: 1.8rem;
-    }
 }

@@ -50,6 +50,7 @@
         transition: 0.2s;
         opacity: 0;
         pointer-events: none;
+        gap: 3rem;
     }
     .headerList.active {
         opacity: 1;

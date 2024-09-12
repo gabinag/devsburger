@@ -16,7 +16,7 @@
 .vazio {
     padding: 1rem;
     color: #fff;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     .vazioLink {
         color: #fff;
         font-weight: 600;
@@ -24,20 +24,19 @@
 }
 
 .notific {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     color: var(--laranja);
     background-color: #fff;
     padding: 2rem;
     border-radius: 1.5rem;
     font-family: "Anton";
     text-align: center;
-    max-width: 24rem;
 }
 
 .details {
     margin-top: 1rem;
     h2 {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
         margin-bottom: .5rem;
     }
     .wrapDetails {
@@ -45,38 +44,38 @@
         flex-direction: column;
         gap: 1rem;
         h3 {
-            font-size: 1.2rem;
+            font-size: 2rem;
         }
         p, li {
-            font-size: 1.4rem;
-            margin-bottom: .3rem;
+            font-size: 1.8rem;
+            margin-bottom: .5rem;
         }
     }
 }
 
 .wrapInfos {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     align-items: flex-end;
     flex-wrap: wrap;
     flex-direction: column;
 }
 
 .wrapInfos div {
-    max-width: 24rem;
     background-color: var(--laranja);
     padding: 1rem;
     border-radius: 1rem;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     text-align: center;
     margin-left: 1rem;
-    font-size: 1.4rem;
+    width: 100%;
+    margin: auto;
 }
 
 .cancelButton {
     display: flex;
     justify-content: flex-end;
-    margin: 1rem 0;
+    margin: 2rem 0;
 }
 
 @media screen and (min-width: 684px) {
@@ -84,14 +83,12 @@
         justify-content: space-between;
     }
     .notific {
-        font-size: 2.5rem;
         padding: 2rem;
         max-width: 100%;
     }
     .details {
         margin-top: 2rem;
         h2 {
-            font-size: 1.8rem;
             margin-bottom: .5rem;
         }
         .wrapDetails {
@@ -107,15 +104,10 @@
             }
         }
     }
-    .wrapInfos {
-        gap: 2rem;
-    }
     .wrapInfos div {
         padding: 2rem;
         font-size: 1.6rem;
-    }
-    .cancelButton {
-        margin: 2rem 0;
+        max-width: 24rem;
     }
     .orderId {
         margin: 1.5rem .5rem 2rem;

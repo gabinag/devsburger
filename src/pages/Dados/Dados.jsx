@@ -111,7 +111,7 @@ export const Dados = () => {
                   required
                 />
                 <div>
-                  <p>Selecione a forma de entrega*</p>
+                  <p className={styles.labelEntrega}>Selecione a forma de entrega*</p>
                   <div className={styles.wrapRadio}>
                     <div>
                       <input
@@ -121,6 +121,7 @@ export const Dados = () => {
                         value="delivery"
                         checked={deliveryOption === 'delivery'}
                         onChange={handleOptionChange}
+                        required
                       />
                       <label htmlFor="delivery">Delivery</label>
                     </div>
@@ -132,6 +133,7 @@ export const Dados = () => {
                         value="retirar"
                         checked={deliveryOption === 'retirar'}
                         onChange={handleOptionChange}
+                        required
                       />
                       <label htmlFor="retirar">Retirar na loja</label>
                     </div>
