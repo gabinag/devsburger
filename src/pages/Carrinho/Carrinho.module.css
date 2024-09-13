@@ -28,7 +28,7 @@
 }
 
 .wrapProdutos {
-    min-height: 50vh;
+    min-height: 46vh;
 }
 
 .card {
@@ -123,7 +123,7 @@ textarea {
     padding: .6rem 1rem;
     border-radius: 1rem;
     border: none;
-    height: 10rem;
+    height: 8rem;
     resize: none;
     font-size: 1.8rem;
 }
