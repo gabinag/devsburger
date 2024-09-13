@@ -23,6 +23,7 @@
 .link {
     color: var(--marrom);
     font-family: "Anton", sans-serif;
+    font-size: 1.6rem;
 }
 
 .hamburger {
@@ -58,6 +59,7 @@
     }
     .link {
         transition: .5s;
+        font-size: 2rem;
     }
     .hamburger {
         display: block;

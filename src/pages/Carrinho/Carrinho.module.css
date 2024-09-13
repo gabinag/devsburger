@@ -28,7 +28,7 @@
 }
 
 .wrapProdutos {
-    min-height: 65vh;
+    min-height: 50vh;
 }
 
 .card {
@@ -59,12 +59,12 @@
 
 .wrapTitle h3 {
     color: var(--laranja);
-    font-size: 1.8rem;
+    font-size: 2.2rem;
 }
 
 .wrapTitle p {
     color: var(--marrom);
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 600;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .desc {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     color: var(--marrom);
     width: min(35rem, 100%);
     margin-bottom: .5rem;
@@ -148,6 +148,9 @@ textarea {
     textarea {
         height: 15rem;
         font-size: 1.6rem;
+    }
+    .wrapProdutos {
+        min-height: 65vh;
     }
 }
 

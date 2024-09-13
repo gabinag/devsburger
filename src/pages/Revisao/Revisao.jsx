@@ -68,53 +68,55 @@ export const Revisao = () => {
         <div className="container">
           <h1 className="containerTitle">Revisão do Pedido</h1>
           <div className={styles.revisao}>
-            <div className={styles.cardRevisao}>
-              <div>
-                <h2>Itens do Pedido</h2>
-                <ul>
-                  {cart && cart.length > 0 ? (
-                    cart.map(item => (
-                      <li key={item.id}>
-                        {item.name || 'Produto desconhecido'} - Quantidade: {item.quantity}
-                      </li>
-                    ))
-                  ) : (
-                    <p>Nenhum item encontrado no carrinho.</p>
+            <div className={styles.wrapCardRevisao}>
+              <div className={styles.cardRevisao}>
+                <div>
+                  <h2>Itens do Pedido</h2>
+                  <ul>
+                    {cart && cart.length > 0 ? (
+                      cart.map(item => (
+                        <li key={item.id}>
+                          {item.name || 'Produto desconhecido'} - Quantidade: {item.quantity}
+                        </li>
+                      ))
+                    ) : (
+                      <p>Nenhum item encontrado no carrinho.</p>
+                    )}
+                  </ul>
+                  {observation && (
+                    <div>
+                      <h3>Observação</h3>
+                      <p>{observation}</p>
+                    </div>
                   )}
-                </ul>
-                {observation && (
-                  <div>
-                    <h3>Observação</h3>
-                    <p>{observation}</p>
-                  </div>
-                )}
+                </div>
+                <div className={styles.btnEdit}>
+                  <Botao label="Editar carrinho" backgroundColor="var(--marrom)" fontSize="1.5rem" onClick={() => navigate('/carrinho')} />
+                </div>
               </div>
-              <div className={styles.btnEdit}>
-                <Botao label="Editar carrinho" backgroundColor="var(--marrom)" fontSize="1.5rem" onClick={() => navigate('/carrinho')} />
+              <div className={styles.cardRevisao}>
+                <div>
+                  <h2>Identificação</h2>
+                  <p>{form.name || 'Não disponível'}</p>
+                  <p>{form.phone || 'Não disponível'}</p>
+                  <p>{deliveryMethod === 'delivery' ? 'Delivery' : 'Retirar na loja'}</p>
+                  {deliveryMethod === 'delivery' && (
+                    <p>{`${form.address.logradouro || ''}, ${form.address.numero || ''} - ${form.address.bairro || ''}, ${form.address.localidade} - ${form.address.uf}${form.address.complemento ? ` (${form.address.complemento})` : ''}`}</p>
+                  )}
+                </div>
+                <div className={styles.btnEdit}>
+                  <Botao label="Editar identificação" backgroundColor="var(--marrom)" fontSize="1.5rem" onClick={() => navigate('/dados')} />
+                </div>
               </div>
-            </div>
-            <div className={styles.cardRevisao}>
-              <div>
-                <h2>Identificação</h2>
-                <p>{form.name || 'Não disponível'}</p>
-                <p>{form.phone || 'Não disponível'}</p>
-                <p>{deliveryMethod === 'delivery' ? 'Delivery' : 'Retirar na loja'}</p>
-                {deliveryMethod === 'delivery' && (
-                  <p>{`${form.address.logradouro || ''}, ${form.address.numero || ''} - ${form.address.bairro || ''}, ${form.address.localidade} - ${form.address.uf}${form.address.complemento ? ` (${form.address.complemento})` : ''}`}</p>
-                )}
-              </div>
-              <div className={styles.btnEdit}>
-                <Botao label="Editar identificação" backgroundColor="var(--marrom)" fontSize="1.5rem" onClick={() => navigate('/dados')} />
-              </div>
-            </div>
-            <div className={styles.cardRevisao}>
-              <div>
-                <h2>Forma de Pagamento</h2>
-                <p>{paymentMethod || 'Não disponível'}</p>
-                <p><strong>Total a pagar:</strong> R${calculaPrecoTotal().toFixed(2)}</p>
-              </div>
-              <div className={styles.btnEdit}>
-                <Botao label="Editar forma de pagamento" backgroundColor="var(--marrom)" fontSize="1.5rem" onClick={() => navigate('/pagamento')} />
+              <div className={styles.cardRevisao}>
+                <div>
+                  <h2>Forma de Pagamento</h2>
+                  <p>{paymentMethod || 'Não disponível'}</p>
+                  <p><strong>Total a pagar:</strong> R${calculaPrecoTotal().toFixed(2)}</p>
+                </div>
+                <div className={styles.btnEdit}>
+                  <Botao label="Editar forma de pagamento" backgroundColor="var(--marrom)" fontSize="1.5rem" onClick={() => navigate('/pagamento')} />
+                </div>
               </div>
             </div>
             <div className={styles.wrapBtn}>

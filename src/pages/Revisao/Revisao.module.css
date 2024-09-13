@@ -36,6 +36,9 @@
 @media screen and (max-width: 600px) {
   .revisao {
     font-size: 1.8rem;
+    .wrapCardRevisao {
+      min-height: 65vh;
+    }
     .cardRevisao {
       h2 {
         font-size: 2rem;
