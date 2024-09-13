@@ -66,7 +66,7 @@
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
-  margin-top: 2rem;
+  margin: 3rem 0;
 }
 
 @media screen and (min-width: 600px){
