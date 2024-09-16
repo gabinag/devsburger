@@ -148,6 +148,9 @@
     .infoItem img {
         height: 1.5rem;
     }
+    .loadProdutos {
+        margin-bottom: 5rem;
+    }
 }
 
 @media (min-width: 706px) {
