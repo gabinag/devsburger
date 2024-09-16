@@ -4,97 +4,94 @@ import styles from './Pedido.module.css';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 import { PedidoContext } from '../../context/PedidoContext';
-import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 import { Botao } from '../../components/Botao/Botao';
 
 export const Pedido = () => {
-    const [order, setOrder] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [order, setOrder] = useState(null); 
+    const [loading, setLoading] = useState(true); 
     const { message, setMessage, deliveryMethod, setDeliveryMethod } = useContext(PedidoContext);
-    const { cart } = useContext(CartContext);
-    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false); 
 
-    const updateMessage = useCallback((status, deliveryMethod) => {
+    const updateMessage = useCallback((status, address) => {
+
         let newMessage = '';
 
         if (status === 'ready') {
-            if (deliveryMethod === 'delivery') {
-                newMessage = 'O pedido está indo até você';
-            } else if (deliveryMethod === 'retirar') {
+            if (address === 'Retirada na loja') {
                 newMessage = 'O seu pedido está pronto! Retire na loja';
+            } else {
+                newMessage = 'O seu pedido está pronto e indo até você';
             }
         } else if (status === 'doing') {
-            newMessage = 'Seu pedido está sendo preparado';
+            newMessage = 'O seu pedido está sendo preparado...';
         } else if (status === 'pending') {
             newMessage = 'Aguardando a aprovação do pedido...';
         } else if (status === 'canceled') {
             newMessage = 'Seu pedido foi cancelado. Em caso de dúvida, entre em contato conosco.';
         }
-
         setMessage(newMessage);
         localStorage.setItem('message', newMessage); 
     }, [setMessage]);
 
+    const isOrderUpdated = (prevOrder, nextOrder) => {
+        return prevOrder?.status !== nextOrder?.status;
+    };
+
     useEffect(() => {
         const fetchOrder = async () => {
-            const orderId = localStorage.getItem('orderId');
+            const orderId = localStorage.getItem('orderId'); 
+            const storedDeliveryMethod = localStorage.getItem('deliveryMethod'); 
+
+            if (storedDeliveryMethod) {
+                setDeliveryMethod(storedDeliveryMethod); 
+            }
+
             if (!orderId) {
                 console.error('ID do pedido não encontrado');
                 setMessage('Não há pedidos feitos, selecione os itens no carrinho em Produtos');
-                setLoading(false);
+                setLoading(false); 
                 return;
             }
 
             try {
-                const response = await apiDevsBurger.get(`/orders/${orderId}`);
+                const response = await apiDevsBurger.get(`/orders/${orderId}`); 
                 const fetchedOrder = response.data;
 
                 if (!order || isOrderUpdated(order, fetchedOrder)) {
-                    setOrder(fetchedOrder);
-                    updateMessage(fetchedOrder.status, deliveryMethod);
+                    setOrder(fetchedOrder); 
+                    updateMessage(fetchedOrder.status, fetchedOrder.address); 
                 }
-                setLoading(false);
+                setLoading(false); 
             } catch (error) {
                 console.error('Erro ao buscar pedido:', error);
-                setLoading(false);
+                setLoading(false); 
             }
         };
 
-        fetchOrder();
-        const intervalId = setInterval(fetchOrder, 5000);
-        return () => clearInterval(intervalId);
-    }, [order, deliveryMethod, updateMessage, setMessage]);
-
-    useEffect(() => {
-        const storedDeliveryMethod = localStorage.getItem('deliveryMethod');
-        if (storedDeliveryMethod) {
-            setDeliveryMethod(storedDeliveryMethod);
-        }
-    }, [setDeliveryMethod]);
-
-    const isOrderUpdated = (prevOrder, nextOrder) => {
-        return prevOrder.status !== nextOrder.status;
-    };
+        fetchOrder(); 
+        const intervalId = setInterval(fetchOrder, 5000); 
+        return () => clearInterval(intervalId); 
+    }, [order, deliveryMethod, updateMessage]);
 
     async function handleCancelOrder(id) {
-        setIsButtonDisabled(true);
+        setIsButtonDisabled(true); 
         try {
             await apiDevsBurger.post("/order/status", { orderId: id, status: "canceled" });
-        
+
             setOrder((prevOrder) => {
                 if (prevOrder && prevOrder.id === id) {
-                    return { ...prevOrder, status: "canceled" };
+                    return { ...prevOrder, status: "canceled" }; 
                 }
                 return prevOrder;
             });
             
-            updateMessage("canceled", deliveryMethod);
+            updateMessage("canceled", deliveryMethod); 
         } catch (error) {
             console.error('Erro ao cancelar pedido:', error);
-            setIsButtonDisabled(false);
+            setIsButtonDisabled(false); 
         }
-    }  
+    }
 
     return (
         <>
@@ -103,13 +100,13 @@ export const Pedido = () => {
                 <div className={styles.pedido}>
                     <h1 className="containerTitle">Status do Pedido</h1>
                     {loading ? (
-                        <p className="loading">Carregando...</p>
+                        <p className="loading">Carregando...</p> 
                     ) : (
                         <>
-                            {order ? (
+                            {order ? ( 
                                 <div className={styles.content}>
                                     <div>
-                                        <p className={styles.notific}>{message}</p>
+                                        <p className={styles.notific}>{message}</p> 
                                         <div className={styles.details}>
                                             <h2>Detalhes do Pedido</h2>
                                             <div className={styles.wrapDetails}>
