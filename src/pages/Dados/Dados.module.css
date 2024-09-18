@@ -102,3 +102,9 @@ select {
 .btnCep {
     font-size: 1.8rem;
 }
+
+@media  screen and (max-width: 600px){
+    .wrapForm {
+        min-height: 60vh;
+    }
+}
