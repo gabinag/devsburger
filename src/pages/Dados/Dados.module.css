@@ -1,8 +1,8 @@
 .wrapRadio {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     margin-bottom: 1.5rem;
-    margin-top: .5rem;
+    margin-top: 1rem;
 }
 
 .wrapRadio input {
@@ -27,11 +27,20 @@ form {
     width: min(30rem, 100%);
     border: none;
     border-radius: .5rem;
-    padding: .3rem .5rem;
+    font-size: 1.8rem;
+    padding: .3rem;
 }
 
 .wrapForm label {
     display: block;
+}
+
+label, .labelEntrega {
+    font-size: 1.8rem;
+}
+
+.labelEntrega {
+    margin-top: 1rem;
 }
 
 .sectionForm{
@@ -90,18 +99,6 @@ select {
     margin-top: 4rem;
 }
 
-@media  screen and (max-width: 600px){
-    label, .labelEntrega {
-        font-size: 2rem;
-    }
-    .wrapForm {
-        min-height: 60vh;
-    }
-    .wrapForm input {
-        font-size: 2rem;
-        padding: .3rem .8rem;
-    }
-    .btnCep {
-        font-size: 1.8rem;
-    }
+.btnCep {
+    font-size: 1.8rem;
 }
