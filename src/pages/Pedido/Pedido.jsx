@@ -6,15 +6,25 @@ import { Footer } from '../../components/Footer/Footer';
 import { PedidoContext } from '../../context/PedidoContext';
 import { Link } from 'react-router-dom';
 import { Botao } from '../../components/Botao/Botao';
+import iconCloche from '../../assets/images/icon-cloche.png';
+import iconWpMarrom from '../../assets/images/icon-whatsapp-marrom.png';
+import iconClock from '../../assets/images/icon-clock.png';
 
 export const Pedido = () => {
     const [order, setOrder] = useState(null); 
     const [loading, setLoading] = useState(true); 
     const { message, setMessage, deliveryMethod, setDeliveryMethod } = useContext(PedidoContext);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false); 
+    const [isModalOpen, setIsModalOpen] = useState(false); 
+    const [orderToCancel, setOrderToCancel] = useState(null); 
+
+    const handleOverlayClick = (e) => {
+        if (e.target === e.currentTarget) {
+            setIsModalOpen(false);
+        }
+    };
 
     const updateMessage = useCallback((status, address) => {
-
         let newMessage = '';
 
         if (status === 'ready') {
@@ -74,7 +84,7 @@ export const Pedido = () => {
         return () => clearInterval(intervalId); 
     }, [order, deliveryMethod, updateMessage]);
 
-    async function handleCancelOrder(id) {
+    const handleCancelOrder = async (id) => {
         setIsButtonDisabled(true); 
         try {
             await apiDevsBurger.post("/order/status", { orderId: id, status: "canceled" });
@@ -90,8 +100,19 @@ export const Pedido = () => {
         } catch (error) {
             console.error('Erro ao cancelar pedido:', error);
             setIsButtonDisabled(false); 
+        } finally {
+            setIsModalOpen(false); 
         }
-    }
+    };
+
+    const openModal = (id) => {
+        setOrderToCancel(id); 
+        setIsModalOpen(true); 
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false); 
+    };
 
     return (
         <>
@@ -129,7 +150,7 @@ export const Pedido = () => {
                                         </div>
                                         <div className={styles.cancelButton}>
                                             <Botao
-                                                onClick={() => handleCancelOrder(order.id)}
+                                                onClick={() => openModal(order.id)} 
                                                 disabled={isButtonDisabled}
                                                 label="Cancelar Pedido"
                                             >
@@ -138,12 +159,15 @@ export const Pedido = () => {
                                     </div>
                                     <div className={styles.wrapInfos}>
                                         <div>
+                                            <img src={iconCloche} alt="Ícone de cloche" />
                                             <p>Volte nesta tela para acompanhar seu pedido</p>
                                         </div>
                                         <div>
+                                            <img src={iconClock} alt="Ícone de relógio" />
                                             <p>O tempo médio de espera é de 40 minutos</p>
                                         </div>
                                         <div>
+                                            <img src={iconWpMarrom} alt="Ícone do whatsapp" />
                                             <p>Entre em contato conosco pelo nosso WhatsApp</p>
                                         </div>
                                     </div>
@@ -155,6 +179,20 @@ export const Pedido = () => {
                     )}
                 </div>
             </div>
+
+            {/* Modal de confirmação */}
+            {isModalOpen && (
+                <div className={styles.modal} onClick={handleOverlayClick}>
+                    <div className={styles.modalContent}>
+                        <h2>Você tem certeza que deseja <br />cancelar este pedido?</h2>
+                        <div className={styles.modalActions}>
+                            <button onClick={closeModal}>Fechar</button>
+                            <button onClick={() => handleCancelOrder(orderToCancel)}>Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            
             <Footer />
         </>
     );
