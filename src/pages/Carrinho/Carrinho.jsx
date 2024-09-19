@@ -3,8 +3,10 @@ import { CartContext } from '../../context/CartContext';
 import styles from './Carrinho.module.css';
 import { useNavigate, Link } from 'react-router-dom';
 import { Botao } from '../../components/Botao/Botao';
-import { Header } from '../../components/Header/Header'
-import { Footer } from '../../components/Footer/Footer'
+import { Header } from '../../components/Header/Header';
+import { Footer } from '../../components/Footer/Footer';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const Carrinho = () => {
   const navigate = useNavigate();
@@ -18,6 +20,13 @@ export const Carrinho = () => {
     const observation = e.target.value;
     localStorage.setItem('observation', observation);
   };
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
 
   return (
     <>
