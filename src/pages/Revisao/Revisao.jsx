@@ -115,7 +115,7 @@ export const Revisao = () => {
                   <p><strong>Total a pagar:</strong> R${calculaPrecoTotal().toFixed(2)}</p>
                 </div>
                 <div className={styles.btnEdit}>
-                  <Botao label="Editar forma de pagamento" backgroundColor="var(--marrom)" fontSize="1.5rem" onClick={() => navigate('/pagamento')} />
+                  <Botao label="Editar pagamento" backgroundColor="var(--marrom)" fontSize="1.5rem" onClick={() => navigate('/pagamento')} />
                 </div>
               </div>
             </div>
