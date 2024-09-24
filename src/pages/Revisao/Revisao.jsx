@@ -84,7 +84,7 @@ export const Revisao = () => {
                     )}
                   </ul>
                   {observation && (
-                    <div>
+                    <div className={styles.observation}>
                       <h3>Observação</h3>
                       <p>{observation}</p>
                     </div>

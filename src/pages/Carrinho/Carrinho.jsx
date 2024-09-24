@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
+import { PedidoContext } from '../../context/PedidoContext';
 import styles from './Carrinho.module.css';
 import { useNavigate, Link } from 'react-router-dom';
 import { Botao } from '../../components/Botao/Botao';
@@ -11,6 +12,7 @@ import { useEffect } from 'react';
 export const Carrinho = () => {
   const navigate = useNavigate();
   const { cart, removeFromCart, addToCart } = useContext(CartContext);
+  const { setObservation } = useContext(PedidoContext); 
 
   const calculaPrecoTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -19,6 +21,7 @@ export const Carrinho = () => {
   const handleObservacaoChange = (e) => {
     const observation = e.target.value;
     localStorage.setItem('observation', observation);
+    setObservation(observation); 
   };
 
   const { pathname } = useLocation();

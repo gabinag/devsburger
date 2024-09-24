@@ -24,6 +24,9 @@
     .btnEdit {
       align-self: flex-end;
     }
+    .observation {
+      margin-top: 1rem;
+    }
   }
   .wrapBtn {
     display: flex;
