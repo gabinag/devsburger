@@ -111,7 +111,7 @@ export const Dados = () => {
                   required
                 />
                 <div>
-                  <p className={styles.labelEntrega}>Selecione a forma de entrega*</p>
+                  <p className={styles.labelEntrega}>Selecione a forma de entrega* <span>(Frete fixo de R$5 ou Retirada gratuita na loja)</span></p>
                   <div className={styles.wrapRadio}>
                     <div>
                       <input

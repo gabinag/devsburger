@@ -12,6 +12,7 @@ export const Footer = () => {
               <img src={iconFace} alt="" />
               <img src={iconInsta} alt="" />
             </div>
+            <p className={styles.endereco}>&#128205; R. Liberdade, 123 - Aparecida, Santos - SP</p>
             <p className={styles.copyright}>© 2024 DevsBurger</p>
         </div>
     </footer>

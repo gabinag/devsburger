@@ -17,6 +17,14 @@ footer {
             max-width: 2.5rem;
         }
     }
+    .endereco {
+        color: #fff;
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+        text-wrap: balance;
+        text-align: center;
+        padding: 0 1rem;
+    }
     .copyright {
         color: var(--laranja);
         font-size: 1.4rem;
