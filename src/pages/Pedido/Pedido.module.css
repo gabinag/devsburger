@@ -107,6 +107,7 @@
             p, li {
                 font-size: 1.6rem;
                 margin-bottom: .5rem;
+                max-width: 35rem;
             }
         }
     }
