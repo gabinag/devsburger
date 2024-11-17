@@ -65,7 +65,7 @@ export const Pagamento = () => {
                       onChange={handlePaymentChange}
                       required
                     />
-                    Cartão de Crédito
+                    Cartão de Débito / Crédito
                   </label>
                   <div
                     className={`${styles.messageBox} ${selectedPayment === 'Cartão' ? styles.messageBoxVisible : ''}`}
