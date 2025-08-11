@@ -1,6 +1,6 @@
-# DevsBurger - Cliente 🍔
+# Devs Burger - Cliente 🍔
 
-Esta é a interface de cliente do sistema de pedidos **DevsBurger**, projeto desenvolvido em React para o Trabalho de Conclusão de Curso apresentado à Faculdade de Tecnologia Rubens Lara, a fim de obter o Título de Tecnólogo em Sistemas para Internet.   
+Esta é a interface de cliente do sistema de pedidos **Devs Burger**, projeto desenvolvido em React para o Trabalho de Conclusão de Curso apresentado à Faculdade de Tecnologia Rubens Lara, a fim de obter o Título de Tecnólogo em Sistemas para Internet.   
 
 ### Objetivos
 
